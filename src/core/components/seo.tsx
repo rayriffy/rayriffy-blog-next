@@ -41,7 +41,7 @@ export const SEO: React.FC<Props> = props => {
       <meta property="twitter:image" content={image} />
 
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link media="print,screen" href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Niramit:wght@400;700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Niramit:wght@400;700&display=swap" rel="stylesheet" media="screen,print" />
 
       {children}
     </Head>
