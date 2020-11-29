@@ -20,7 +20,7 @@ const Page: NextPage<Props> = props => {
   const { featuredBlogPost, blogPosts, panigate } = props
 
   return (
-    <div className="pt-4 max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
       {featuredBlogPost !== null && (
         <div className="max-w-4xl mx-auto">
         <Link href={`/${featuredBlogPost.slug}`}>
