@@ -23,7 +23,7 @@ export const remarkParser: Plugin = () => {
       createIframe(node, `https://embed.nicovideo.jp/watch/${node.value.slice('niconico: '.length)}`)
     } else if (node.value.startsWith('youtube: ')) {
       createIframe(node, `https://www.youtube.com/embed/${node.value.slice('youtube: '.length)}`)
-    } else if (node.value.startsWith('oembed: ')) {} else {
+    } else if (node.value.startsWith('oembed: ')) {} else if (/\w+: [\w\+\-\_\=\!\@]+/.test(node.value)) {
       console.log(node)
     }
   }
