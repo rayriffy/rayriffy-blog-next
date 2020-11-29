@@ -77,7 +77,7 @@ export const Footer: React.FC = React.memo((props) => {
             </svg>
           </a>
         </div>
-        <p className="mt-8 text-center text-base text-gray-400">
+        <p className="mt-8 text-center text-base text-gray-500">
           &copy; 2020 Phumrapee Limpianchop
         </p>
       </div>

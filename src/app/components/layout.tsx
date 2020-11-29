@@ -13,7 +13,7 @@ export const AppLayout: React.FC = props => {
       <header className="max-w-md mx-auto">
         <div className="flex justify-center">
           <Link href="/">
-            <a>
+            <a aria-label="Logo">
               <Logo className="w-24" />
             </a>
           </Link>

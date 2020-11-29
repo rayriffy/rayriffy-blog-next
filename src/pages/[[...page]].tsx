@@ -34,7 +34,7 @@ const Page: NextPage<Props> = props => {
                 </div>
               </div>
               <div className="next-image-wrapper">
-                <Image src={featuredBlogPost.banner.url} width={featuredBlogPost.banner.width} height={featuredBlogPost.banner.height} />
+                <Image src={featuredBlogPost.banner.url} width={featuredBlogPost.banner.width} height={featuredBlogPost.banner.height} alt={featuredBlogPost.title} />
               </div>
             </div>
           </a>
@@ -46,7 +46,7 @@ const Page: NextPage<Props> = props => {
           <Link href={`/${blogPost.slug}`}>
             <a>
               <div className="rounded-none sm:rounded-lg overflow-hidden shadow-lg" key={`blog-${blogPost.slug}`}>
-                <Image src={blogPost.banner.url} width={blogPost.banner.width} height={blogPost.banner.height} />
+                <Image src={blogPost.banner.url} width={blogPost.banner.width} height={blogPost.banner.height} alt={blogPost.title} />
                 <div className="px-4 py-5 sm:px-6">
                   <h1 className="text-2xl text-gray-900">{blogPost.title}</h1>
                   <span className="text-gray-600">Written by {blogPost.author.name} on </span>
