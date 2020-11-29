@@ -6,6 +6,14 @@ module.exports = withPlugins([
   [withPreact]
 ], {
   target: 'serverless',
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ]
+  },
   images: {
     domains: ['images.ctfassets.net']
   }

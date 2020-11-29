@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "next"
+    "dev": "next",
+    "build": "next build"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.3.1",
@@ -25,6 +26,7 @@
     "react-dom": "npm:@preact/compat",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
+    "sitemap": "^6.3.3",
     "tailwindcss": "^2.0.1"
   },
   "devDependencies": {

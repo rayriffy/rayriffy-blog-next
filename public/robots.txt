@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /pages
+Sitemap: https://blog.rayriffy.com/sitemap.xml
+Host: https://blog.rayriffy.com
