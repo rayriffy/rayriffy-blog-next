@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 
 import { Plugin } from 'unified'
-import visit from 'unist-util-visit'
 import { selectAll } from 'unist-util-select'
 import querystring from 'querystring'
 
@@ -65,10 +64,8 @@ export const remarkParser: Plugin = () => {
             <div class="flex justify-center">${oembedResult.html}</div>
           `
         }
-  
-        // code
       } else if (/\w+: [\w\+\-\_\=\!\@]+/.test(node.value)) {
-        console.log(node)
+        // console.log(node)
       }
     }))
   }

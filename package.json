@@ -30,8 +30,7 @@
     "remark-html": "^13.0.1",
     "sitemap": "^6.3.3",
     "tailwindcss": "^2.0.1",
-    "unist-util-select": "^3.0.2",
-    "unist-util-visit": "^2.0.3"
+    "unist-util-select": "^3.0.2"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.165",
