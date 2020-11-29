@@ -1,12 +1,7 @@
-
 import { Plugin } from 'unified'
-import { Node } from 'unist'
 import visit from 'unist-util-visit'
 
-interface MarkdownNode extends Node {
-  value: string
-}
-// job: transform code to obembed and handle special cases for nicovideo
+import { MarkdownNode } from '../@types/MarkdownNode'
 
 const createIframe = (node: MarkdownNode, url: string) => {
   node.type = `html`
@@ -28,10 +23,12 @@ export const remarkParser: Plugin = () => {
       createIframe(node, `https://embed.nicovideo.jp/watch/${node.value.slice('niconico: '.length)}`)
     } else if (node.value.startsWith('youtube: ')) {
       createIframe(node, `https://www.youtube.com/embed/${node.value.slice('youtube: '.length)}`)
+    } else if (node.value.startsWith('oembed: ')) {} else {
+      console.log(node)
     }
   }
 
-  const transform = (markdownAST: Node) => {
+  const transform = (markdownAST: MarkdownNode) => {
     visit(markdownAST, 'inlineCode', visitor)
   }
 
