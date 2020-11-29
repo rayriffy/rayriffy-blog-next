@@ -1,0 +1,37 @@
+{
+  "name": "rayriffy-blog-next",
+  "version": "1.0.0",
+  "description": "Next iteration of Riffy Blog",
+  "main": "index.js",
+  "repository": "git@github.com:rayriffy/rayriffy-blog-next",
+  "author": "Phumrapee Limpianchop <contact@rayriffy.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.3.1",
+    "autoprefixer": "^10.0.4",
+    "dayjs": "^1.9.6",
+    "lodash": "^4.17.20",
+    "next": "^10.0.3",
+    "next-compose-plugins": "^2.2.1",
+    "next-plugin-preact": "^3.0.3",
+    "postcss": "^8.1.10",
+    "preact": "^10.5.7",
+    "preact-render-to-string": "^5.1.12",
+    "react": "npm:@preact/compat",
+    "react-dom": "npm:@preact/compat",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
+    "tailwindcss": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.165",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "typescript": "^4.1.2"
+  }
+}
