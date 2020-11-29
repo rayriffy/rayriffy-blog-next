@@ -40,11 +40,12 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
   const { default: remark } = await import('remark')
   const { default: html } = await import('remark-html')
+  const { remarkParser } = await import('../core/services/remarkParser')
 
   const slug = context.params.slug as string
 
   const blogPost = await getBlogPost(slug)
-  const parser = await remark().use(html).process(blogPost.content)
+  const parser = await remark().use(html).use(remarkParser).process(blogPost.content)
 
   return {
     props: {
