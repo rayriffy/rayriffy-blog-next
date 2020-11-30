@@ -37,7 +37,7 @@ const Page: NextPage<Props> = props => {
                 </div>
               </div>
               <div className="next-image-wrapper">
-                <Image src={featuredBlogPost.banner.url} width={featuredBlogPost.banner.width} height={featuredBlogPost.banner.height} alt={featuredBlogPost.title} />
+                <Image src={featuredBlogPost.banner.url} width={featuredBlogPost.banner.width} height={featuredBlogPost.banner.height} alt={featuredBlogPost.title} priority />
               </div>
             </div>
           </a>
@@ -45,15 +45,22 @@ const Page: NextPage<Props> = props => {
         </div>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
-        {blogPosts.map(blogPost => (
+        {blogPosts.map((blogPost, i) => (
           <Link href={`/${blogPost.slug}`}>
             <a>
               <div className="rounded-none sm:rounded-lg overflow-hidden shadow-lg" key={`blog-${blogPost.slug}`}>
-                {blogPost.banner === null ? (
-                  <Image src={'/default.jpg'} width={1200} height={630} alt={blogPost.title} />
-                ) : (
-                  <Image src={blogPost.banner.url} width={blogPost.banner.width} height={blogPost.banner.height} alt={blogPost.title} />
-                )}
+                <Image 
+                  alt={blogPost.title}
+                  priority={i < 2}
+                  {...blogPost.banner === null ? {
+                    src: '/default.jpg',
+                    width: 1200,
+                    height: 630,
+                  } : {
+                    src: blogPost.banner.url,
+                    ...blogPost.banner
+                  }}
+                />
 
                 <div className="px-4 py-4 sm:px-6">
                   <h1 className="text-2xl text-gray-900">{blogPost.title}</h1>
