@@ -9,10 +9,10 @@ interface RawQueryResult {
   }
 }
 
-export const getBlogPost = async (slug: string) => {
+export const getBlogPost = async (slug: string, preview = false) => {
   const query = `
     query ($slug: String!) {
-      blogPostCollection(where: { slug: $slug }) {
+      blogPostCollection(where: { slug: $slug }, preview: ${preview ? 'true' : 'false'}) {
         items {
           ${blogPostField}
         }
@@ -25,7 +25,7 @@ export const getBlogPost = async (slug: string) => {
     headers: {
       'Content-Type': 'application/json',
       'Accepts': 'application/json',
-      'Authorization': `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`
+      'Authorization': `Bearer ${preview ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN : process.env.CONTENTFUL_ACCESS_TOKEN}`
     },
     body: JSON.stringify({
       query,

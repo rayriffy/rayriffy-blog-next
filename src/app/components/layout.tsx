@@ -9,20 +9,22 @@ export const AppLayout: React.FC = props => {
   const { children } = props
 
   return (
-    <div className="py-12 space-y-8">
-      <header className="max-w-md mx-auto">
-        <div className="flex justify-center">
-          <Link href="/">
-            <a aria-label="Logo">
-              <Logo className="w-24" />
-            </a>
-          </Link>
-        </div>
-      </header>
-      <main>
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <React.Fragment>
+      <div className="py-12 space-y-8">
+        <header className="max-w-md mx-auto">
+          <div className="flex justify-center">
+            <Link href="/">
+              <a aria-label="Logo">
+                <Logo className="w-24" />
+              </a>
+            </Link>
+          </div>
+        </header>
+        <main>
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </React.Fragment>
   )
 }

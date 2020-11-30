@@ -6,8 +6,10 @@ import Link from 'next/link'
 
 import { BlogPost } from '../core/@types/BlogPost'
 import { Pagination } from '../core/components/panigation'
+import { Preview } from '../core/components/preview'
 
 interface Props {
+  preview: boolean
   featuredBlogPost: BlogPost | null
   blogPosts: BlogPost[]
   panigate: {
@@ -17,10 +19,11 @@ interface Props {
 }
 
 const Page: NextPage<Props> = props => {
-  const { featuredBlogPost, blogPosts, panigate } = props
+  const { featuredBlogPost, blogPosts, panigate, preview } = props
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
+      {preview && <Preview />}
       {featuredBlogPost !== null && (
         <div className="max-w-4xl mx-auto">
         <Link href={`/${featuredBlogPost.slug}`}>
@@ -46,11 +49,16 @@ const Page: NextPage<Props> = props => {
           <Link href={`/${blogPost.slug}`}>
             <a>
               <div className="rounded-none sm:rounded-lg overflow-hidden shadow-lg" key={`blog-${blogPost.slug}`}>
-                <Image src={blogPost.banner.url} width={blogPost.banner.width} height={blogPost.banner.height} alt={blogPost.title} />
-                <div className="px-4 py-5 sm:px-6">
+                {blogPost.banner === null ? (
+                  <Image src={'/default.jpg'} width={1200} height={630} alt={blogPost.title} />
+                ) : (
+                  <Image src={blogPost.banner.url} width={blogPost.banner.width} height={blogPost.banner.height} alt={blogPost.title} />
+                )}
+
+                <div className="px-4 py-4 sm:px-6">
                   <h1 className="text-2xl text-gray-900">{blogPost.title}</h1>
                   <span className="text-gray-600">Written by {blogPost.author.name} on </span>
-                  <p className="text-gray-600 pt-2">{blogPost.subtitle}</p>
+                  <p className="text-gray-600 py-2">{blogPost.subtitle}</p>
                 </div>
               </div>
             </a>
@@ -71,18 +79,21 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   const { default: dayjs } = await import('dayjs')
   const { chunk, get } = await import('lodash')
 
-  const targetPage = Number(get(context.params, 'page[1]', '1'))
+  const { params, preview = false } = context
+  const targetPage = Number(get(params, 'page[1]', '1'))
 
-  const [featuredBlogPost, blogPosts] = await Promise.all([getFeaturedBlogPost(), getBlogPosts()])
+  const [featuredBlogPost, blogPosts] = await Promise.all([getFeaturedBlogPost(), getBlogPosts(preview)])
   const blogChunks = chunk(blogPosts, 6)
   const blogChunk = get(blogChunks, targetPage - 1)
 
   return {
     props: {
+      preview,
       featuredBlogPost: targetPage === 1 ? featuredBlogPost : null,
       blogPosts: blogChunk.map(blogPost => ({
         ...blogPost,
         date: dayjs(blogPost.date).format('DD MMM YYYY'),
+        content: '',
       })),
       panigate: {
         current: targetPage,

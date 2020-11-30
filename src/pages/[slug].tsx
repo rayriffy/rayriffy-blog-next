@@ -4,19 +4,22 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 
 import { SEO } from '../core/components/seo'
+import { Preview } from '../core/components/preview'
 
 import { BlogPost } from '../core/@types/BlogPost'
 
 interface Props {
+  preview: boolean
   blogPost: BlogPost
 }
 
 const Page: NextPage<Props> = props => {
-  const { blogPost } = props
+  const { blogPost, preview } = props
 
   return (
     <React.Fragment>
       <SEO title={blogPost.title} description={blogPost.subtitle} image={blogPost.banner.url} />
+      {preview && <Preview />}
       <div className="max-w-4xl mx-auto">
         <div className="bg-white shadow-xl rounded-lg overflow-hidden">
           <Image src={blogPost.banner.url} width={blogPost.banner.width} height={blogPost.banner.height} alt={blogPost.title} priority />
@@ -42,13 +45,15 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   const { default: html } = await import('remark-html')
   const { remarkParser } = await import('../core/services/remarkParser')
 
-  const slug = context.params.slug as string
+  const { params, preview = false } = context
+  const slug = params.slug as string
 
-  const blogPost = await getBlogPost(slug)
+  const blogPost = await getBlogPost(slug, preview)
   const parser = await remark().use(html).use(remarkParser).process(blogPost.content)
 
   return {
     props: {
+      preview,
       blogPost: {
         ...blogPost,
         date: dayjs(blogPost.date).format('DD MMM YYYY'),
