@@ -3,7 +3,7 @@ import React from "react";
 export const Footer: React.FC = React.memo((props) => {
   return (
     <footer className="bg-white">
-      <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 overflow-hidden sm:px-6 lg:px-8">
         {/* <nav
           className="-mx-5 -my-2 flex flex-wrap justify-center"
           aria-label="Footer"
