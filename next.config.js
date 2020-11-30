@@ -20,5 +20,8 @@ module.exports = withPlugins([
   },
   images: {
     domains: ['images.ctfassets.net']
-  }
+  },
+  experimental: {
+    optimizeFonts: true,
+  },
 })
