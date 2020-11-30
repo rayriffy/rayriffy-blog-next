@@ -37,29 +37,35 @@ const Page: NextPage<Props> = props => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
-  const { getBlogPost } = await import('../core/services/getBlogPost')
+  try {
+    const { getBlogPost } = await import('../core/services/getBlogPost')
 
-  const { default: dayjs } = await import('dayjs')
+    const { default: dayjs } = await import('dayjs')
 
-  const { default: remark } = await import('remark')
-  const { default: html } = await import('remark-html')
-  const { remarkParser } = await import('../core/services/remarkParser')
+    const { default: remark } = await import('remark')
+    const { default: html } = await import('remark-html')
+    const { remarkParser } = await import('../core/services/remarkParser')
 
-  const { params, preview = false } = context
-  const slug = params.slug as string
+    const { params, preview = false } = context
+    const slug = params.slug as string
 
-  const blogPost = await getBlogPost(slug, preview)
-  const parser = await remark().use(html).use(remarkParser).process(blogPost.content)
+    const blogPost = await getBlogPost(slug, preview)
+    const parser = await remark().use(html).use(remarkParser).process(blogPost.content)
 
-  return {
-    props: {
-      preview,
-      blogPost: {
-        ...blogPost,
-        date: dayjs(blogPost.date).format('DD MMM YYYY'),
-        content: parser.toString(),
-      },
-    } 
+    return {
+      props: {
+        preview,
+        blogPost: {
+          ...blogPost,
+          date: dayjs(blogPost.date).format('DD MMM YYYY'),
+          content: parser.toString(),
+        },
+      } 
+    }
+  } catch {
+    return {
+      notFound: true,
+    }
   }
 }
 
@@ -74,7 +80,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         slug: blogPost.slug
       }
     })),
-    fallback: false,
+    fallback: true,
   }
 }
 
