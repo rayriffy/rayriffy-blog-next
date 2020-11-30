@@ -56,6 +56,7 @@ const Page: NextPage<Props> = props => {
                 width={blogPost.banner.width}
                 height={blogPost.banner.height}
                 alt={blogPost.title}
+                layout="responsive"
                 priority
               />
               <div className="pt-4 pb-8 px-4 sm:px-6 lg:px-8">

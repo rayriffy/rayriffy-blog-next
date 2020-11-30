@@ -48,6 +48,7 @@ const Page: NextPage<Props> = props => {
                     width={featuredBlogPost.banner.width}
                     height={featuredBlogPost.banner.height}
                     alt={featuredBlogPost.title}
+                    layout="responsive"
                     priority
                   />
                 </div>
@@ -67,6 +68,7 @@ const Page: NextPage<Props> = props => {
                 <Image
                   alt={blogPost.title}
                   priority={i < 2}
+                  layout="responsive"
                   {...(blogPost.banner === null
                     ? {
                         src: '/default.jpg',
