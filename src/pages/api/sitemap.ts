@@ -6,8 +6,10 @@ import { getBlogPosts } from '../../core/services/getBlogPosts'
 const api: NextApiHandler = async (req, res) => {
   try {
     const blogPosts = await getBlogPosts()
-    
-    const sitemapStream = new SitemapStream({ hostname: 'https://' + req.headers.host })
+
+    const sitemapStream = new SitemapStream({
+      hostname: 'https://' + req.headers.host,
+    })
     sitemapStream.write({
       url: '',
       changefreq: 'daily',
@@ -23,8 +25,9 @@ const api: NextApiHandler = async (req, res) => {
     })
     sitemapStream.end()
 
-    const sitemap = await streamToPromise(sitemapStream)
-      .then(sm => sm.toString())
+    const sitemap = await streamToPromise(sitemapStream).then(sm =>
+      sm.toString()
+    )
     res.write(sitemap)
     res.end()
   } catch (e) {

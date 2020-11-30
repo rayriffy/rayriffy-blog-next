@@ -10,7 +10,12 @@ interface Props {
 }
 
 export const SEO: React.FC<Props> = props => {
-  const { title, description = 'The Nerdy Blogger', image = 'https://blog.rayriffy.com/default.jpg', children } = props
+  const {
+    title,
+    description = 'The Nerdy Blogger',
+    image = 'https://blog.rayriffy.com/default.jpg',
+    children,
+  } = props
 
   const router = useRouter()
 
@@ -41,7 +46,10 @@ export const SEO: React.FC<Props> = props => {
       <meta property="twitter:image" content={image} />
 
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Niramit:wght@400;700&display=swap" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Niramit:wght@400;700&display=swap"
+      />
 
       {children}
     </Head>

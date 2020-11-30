@@ -41,7 +41,7 @@ module.exports = {
         DEFAULT: {
           css: {
             h2: {
-              marginTop: '0'
+              marginTop: '0',
             },
           },
         },

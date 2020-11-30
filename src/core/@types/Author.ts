@@ -1,4 +1,4 @@
-import { Asset } from "./Asset";
+import { Asset } from './Asset'
 
 export interface Author {
   user: string

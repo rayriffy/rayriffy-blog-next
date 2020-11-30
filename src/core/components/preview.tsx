@@ -11,7 +11,10 @@ export const Preview: React.FC = React.memo(props => {
         </p>
         <span className="block sm:ml-2 sm:inline-block">
           <Link href="/api/exitPreview">
-            <a className="font-bold underline"> Disable <span aria-hidden="true">&rarr;</span></a>
+            <a className="font-bold underline">
+              {' '}
+              Disable <span aria-hidden="true">&rarr;</span>
+            </a>
           </Link>
         </span>
       </div>

@@ -23,7 +23,13 @@ const Page: NextPage<Props> = props => {
     return (
       <div className="max-w-2xl mx-auto">
         <div className="bg-white shadow-xl rounded-lg overflow-hidden">
-          <video src="https://media.tenor.com/videos/2a80e4b7a52833a14ed31b0bfa59e601/mp4" className="w-full h-auto" autoPlay loop muted></video>
+          <video
+            src="https://media.tenor.com/videos/2a80e4b7a52833a14ed31b0bfa59e601/mp4"
+            className="w-full h-auto"
+            autoPlay
+            loop
+            muted
+          ></video>
           <div className="pt-4 pb-8 px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl pt-2">กำลังโหลด</h1>
             <div className="pt-6 prose prose-blue max-w-3xl mx-auto">
@@ -36,18 +42,33 @@ const Page: NextPage<Props> = props => {
   } else {
     return (
       <React.Fragment>
-        <SEO title={blogPost.title} description={blogPost.subtitle} image={blogPost.banner.url} />
+        <SEO
+          title={blogPost.title}
+          description={blogPost.subtitle}
+          image={blogPost.banner.url}
+        />
         <div className="space-y-6">
           {preview && <Preview />}
           <div className="max-w-4xl mx-auto">
             <div className="bg-white shadow-xl rounded-lg overflow-hidden">
-              <Image src={blogPost.banner.url} width={blogPost.banner.width} height={blogPost.banner.height} alt={blogPost.title} priority />
+              <Image
+                src={blogPost.banner.url}
+                width={blogPost.banner.width}
+                height={blogPost.banner.height}
+                alt={blogPost.title}
+                priority
+              />
               <div className="pt-4 pb-8 px-4 sm:px-6 lg:px-8">
                 <h1 className="text-4xl pt-2">{blogPost.title}</h1>
-                <span className="text-gray-600">Written by {blogPost.author.name} on {blogPost.date}</span>
-                <div className="pt-6 prose prose-blue max-w-3xl mx-auto" dangerouslySetInnerHTML={{
-                  __html: blogPost.content
-                }}></div>
+                <span className="text-gray-600">
+                  Written by {blogPost.author.name} on {blogPost.date}
+                </span>
+                <article
+                  className="pt-6 prose prose-blue max-w-3xl mx-auto"
+                  dangerouslySetInnerHTML={{
+                    __html: blogPost.content,
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -71,7 +92,10 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
     const slug = params.slug as string
 
     const blogPost = await getBlogPost(slug, preview)
-    const parser = await remark().use(html).use(remarkParser).process(blogPost.content)
+    const parser = await remark()
+      .use(html)
+      .use(remarkParser)
+      .process(blogPost.content)
 
     return {
       props: {
@@ -81,7 +105,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
           date: dayjs(blogPost.date).format('DD MMM YYYY'),
           content: parser.toString(),
         },
-      } 
+      },
     }
   } catch (e) {
     return {
@@ -98,8 +122,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: blogPosts.map(blogPost => ({
       params: {
-        slug: blogPost.slug
-      }
+        slug: blogPost.slug,
+      },
     })),
     fallback: true,
   }

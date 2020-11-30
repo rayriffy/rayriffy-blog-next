@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-export const Footer: React.FC = React.memo((props) => {
+export const Footer: React.FC = React.memo(props => {
   return (
     <footer className="bg-white">
       <div className="max-w-7xl mx-auto px-4 overflow-hidden sm:px-6 lg:px-8">
@@ -45,7 +45,10 @@ export const Footer: React.FC = React.memo((props) => {
           </div>
         </nav> */}
         <div className="mt-8 flex justify-center space-x-6">
-          <a href="https://facebook.com/riffyblog" className="text-gray-400 hover:text-gray-500">
+          <a
+            href="https://facebook.com/riffyblog"
+            className="text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Facebook</span>
             <svg
               className="h-6 w-6"
@@ -61,7 +64,10 @@ export const Footer: React.FC = React.memo((props) => {
             </svg>
           </a>
 
-          <a href="https://github.com/rayriffy/rayriffy-blog-next" className="text-gray-400 hover:text-gray-500">
+          <a
+            href="https://github.com/rayriffy/rayriffy-blog-next"
+            className="text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">GitHub</span>
             <svg
               className="h-6 w-6"
@@ -82,5 +88,5 @@ export const Footer: React.FC = React.memo((props) => {
         </p>
       </div>
     </footer>
-  );
-});
+  )
+})

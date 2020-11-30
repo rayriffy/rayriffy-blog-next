@@ -26,45 +26,64 @@ const Page: NextPage<Props> = props => {
       {preview && <Preview />}
       {featuredBlogPost !== null && (
         <div className="max-w-4xl mx-auto">
-        <Link href={`/${featuredBlogPost.slug}`}>
-          <a>
-            <div className="rounded-none sm:rounded-lg overflow-hidden relative">
-              <div className="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
-                <div className="space-y-0.5 md:space-y-2 text-white">
-                  <span className="uppercase text-mediu md:text-lg">Featured</span>
-                  <h1 className="text-2xl md:text-4xl">{featuredBlogPost.title}</h1>
-                  <p className="text-lg md:text-xl">{featuredBlogPost.subtitle}</p>
+          <Link href={`/${featuredBlogPost.slug}`}>
+            <a>
+              <div className="rounded-none sm:rounded-lg overflow-hidden relative">
+                <div className="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
+                  <div className="space-y-0.5 md:space-y-2 text-white">
+                    <span className="uppercase text-mediu md:text-lg">
+                      Featured
+                    </span>
+                    <h1 className="text-2xl md:text-4xl">
+                      {featuredBlogPost.title}
+                    </h1>
+                    <p className="text-lg md:text-xl">
+                      {featuredBlogPost.subtitle}
+                    </p>
+                  </div>
+                </div>
+                <div className="next-image-wrapper">
+                  <Image
+                    src={featuredBlogPost.banner.url}
+                    width={featuredBlogPost.banner.width}
+                    height={featuredBlogPost.banner.height}
+                    alt={featuredBlogPost.title}
+                    priority
+                  />
                 </div>
               </div>
-              <div className="next-image-wrapper">
-                <Image src={featuredBlogPost.banner.url} width={featuredBlogPost.banner.width} height={featuredBlogPost.banner.height} alt={featuredBlogPost.title} priority />
-              </div>
-            </div>
-          </a>
-        </Link>
+            </a>
+          </Link>
         </div>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
         {blogPosts.map((blogPost, i) => (
           <Link href={`/${blogPost.slug}`}>
             <a>
-              <div className="rounded-none sm:rounded-lg overflow-hidden shadow-lg" key={`blog-${blogPost.slug}`}>
-                <Image 
+              <div
+                className="rounded-none sm:rounded-lg overflow-hidden shadow-lg"
+                key={`blog-${blogPost.slug}`}
+              >
+                <Image
                   alt={blogPost.title}
                   priority={i < 2}
-                  {...blogPost.banner === null ? {
-                    src: '/default.jpg',
-                    width: 1200,
-                    height: 630,
-                  } : {
-                    src: blogPost.banner.url,
-                    ...blogPost.banner
-                  }}
+                  {...(blogPost.banner === null
+                    ? {
+                        src: '/default.jpg',
+                        width: 1200,
+                        height: 630,
+                      }
+                    : {
+                        src: blogPost.banner.url,
+                        ...blogPost.banner,
+                      })}
                 />
 
                 <div className="px-4 py-4 sm:px-6">
                   <h1 className="text-2xl text-gray-900">{blogPost.title}</h1>
-                  <span className="text-gray-600">Written by {blogPost.author.name} on </span>
+                  <span className="text-gray-600">
+                    Written by {blogPost.author.name} on{' '}
+                  </span>
                   <p className="text-gray-600 py-2">{blogPost.subtitle}</p>
                 </div>
               </div>
@@ -81,7 +100,9 @@ const Page: NextPage<Props> = props => {
 
 export const getStaticProps: GetStaticProps<Props> = async context => {
   const { getBlogPosts } = await import('../core/services/getBlogPosts')
-  const { getFeaturedBlogPost } = await import('../core/services/getFeaturedBlogPost')
+  const { getFeaturedBlogPost } = await import(
+    '../core/services/getFeaturedBlogPost'
+  )
 
   const { default: dayjs } = await import('dayjs')
   const { chunk, get } = await import('lodash')
@@ -89,7 +110,10 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   const { params, preview = false } = context
   const targetPage = Number(get(params, 'page[1]', '1'))
 
-  const [featuredBlogPost, blogPosts] = await Promise.all([getFeaturedBlogPost(), getBlogPosts(preview)])
+  const [featuredBlogPost, blogPosts] = await Promise.all([
+    getFeaturedBlogPost(),
+    getBlogPosts(preview),
+  ])
   const blogChunks = chunk(blogPosts, 6)
   const blogChunk = get(blogChunks, targetPage - 1)
 
@@ -106,7 +130,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
         current: targetPage,
         pages: blogChunks.length,
       },
-    }
+    },
   }
 }
 
@@ -119,16 +143,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const blogChunks = chunk(blogPosts, 6)
 
   return {
-    paths: blogChunks
-      .map((_, i) => {
-        const page = i + 1
+    paths: blogChunks.map((_, i) => {
+      const page = i + 1
 
-        return {
-          params: {
-            page: page === 1 ? [] : ['pages', page.toString()],
-          },
-        }
-      }),
+      return {
+        params: {
+          page: page === 1 ? [] : ['pages', page.toString()],
+        },
+      }
+    }),
     fallback: false,
   }
 }

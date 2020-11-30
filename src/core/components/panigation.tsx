@@ -51,7 +51,9 @@ export const Pagination: React.FC<Props> = React.memo(props => {
         <Link
           key={`pagination-${startPoint + i}`}
           href={
-            startPoint + i === 0 ? prefix : `${prefix}pages/${startPoint + i + 1}`
+            startPoint + i === 0
+              ? prefix
+              : `${prefix}pages/${startPoint + i + 1}`
           }
         >
           <a>

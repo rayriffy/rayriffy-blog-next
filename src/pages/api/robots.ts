@@ -4,8 +4,7 @@ const api: NextApiHandler = async (req, res) => {
   try {
     if (req.headers.host !== 'blog.rayriffy.com')
       res.write(`User-agent: *\nDisallow: /`)
-    else
-    res.write(`User-agent: *\nDisallow: /pages`)
+    else res.write(`User-agent: *\nDisallow: /pages`)
     res.end()
   } catch (e) {
     console.error(e)

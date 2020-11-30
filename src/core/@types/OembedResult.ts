@@ -3,8 +3,8 @@ export interface OembedResult {
   author_name: string
   author_url: string
   html: string
-  width: number,
-  height: null,
+  width: number
+  height: null
   type: string
   cache_age: string
   provider_name: string

@@ -20,9 +20,7 @@ export const AppLayout: React.FC = props => {
             </Link>
           </div>
         </header>
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
       </div>
     </React.Fragment>
