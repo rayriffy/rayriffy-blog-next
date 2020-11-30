@@ -15,7 +15,7 @@ export const AppLayout: React.FC = props => {
           <div className="flex justify-center">
             <Link href="/">
               <a aria-label="Logo">
-                <Logo className="w-24" />
+                <Logo className="w-20" />
               </a>
             </Link>
           </div>
