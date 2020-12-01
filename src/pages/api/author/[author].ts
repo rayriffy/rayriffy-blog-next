@@ -53,7 +53,7 @@ const api: NextApiHandler = async (req, res) => {
         code: 200,
         data: queryResult.data.blogPostCollection.items.map(item => ({
           url: `https://blog.rayriffy.com/${item.slug}`,
-          ...omit(item, ['content', 'categoryCollection', 'author']),
+          ...omit(item, ['content', 'author']),
         })),
       })
     } else {
