@@ -1,7 +1,9 @@
 import { NextApiHandler } from 'next'
 import { omit } from 'lodash'
+import Cors from 'cors'
 
 import { blogPostField } from '../../../core/constants/blogPostField'
+import { intitializeMiddleware } from '../../../core/services/intitializeMiddleware'
 
 import { BlogPost } from '../../../core/@types/BlogPost'
 
@@ -13,8 +15,16 @@ interface RawQueryResult {
   }
 }
 
+const cors = intitializeMiddleware(
+  Cors({
+    methods: ['GET'],
+  })
+)
+
 const api: NextApiHandler = async (req, res) => {
   const { page, author } = req.query
+
+  await cors(req, res)
 
   try {
     const query = `
