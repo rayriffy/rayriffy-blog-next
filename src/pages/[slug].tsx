@@ -60,10 +60,22 @@ const Page: NextPage<Props> = props => {
                 priority
               />
               <div className="pt-4 pb-8 px-4 sm:px-6 lg:px-8">
-                <h1 className="text-4xl pt-2">{blogPost.title}</h1>
-                <span className="text-gray-600">
-                  Written by {blogPost.author.name} on {blogPost.date}
-                </span>
+                <div className="pt-2">
+                  <h1 className="text-4xl">{blogPost.title}</h1>
+                  <span className="text-gray-600">
+                    Written by {blogPost.author.name} on {blogPost.date}
+                  </span>
+                  <div className="flex flex-wrap space-x-2 space-y-2 pt-3">
+                    {blogPost.categoryCollection.items.map(category => (
+                      <span
+                        className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800"
+                        key={`category-slug-${category.key}`}
+                      >
+                        {category.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
                 <article
                   className="pt-6 prose prose-blue max-w-3xl mx-auto"
                   dangerouslySetInnerHTML={{

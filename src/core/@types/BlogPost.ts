@@ -1,5 +1,6 @@
 import { Asset } from './Asset'
 import { Author } from './Author'
+import { Category } from './Category'
 
 export interface BlogPost {
   slug: string
@@ -10,4 +11,7 @@ export interface BlogPost {
   featured: boolean
   author: Author
   content: string
+  categoryCollection: {
+    items: Category[]
+  }
 }

@@ -1,3 +1,5 @@
+import { categoryField } from './categoryField'
+
 export const blogPostField = `
 slug
 banner {
@@ -13,4 +15,9 @@ author {
   name
 }
 content
+categoryCollection {
+  items {
+    ${categoryField}
+  }
+}
 `
