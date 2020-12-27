@@ -19,6 +19,7 @@ const createIframe = (node: MarkdownNode, url: string) => {
         src="${url}"
         class="w-full"
         style="border:0"
+        loading="lazy"
         allowfullscreen
       ></iframe>
     </div>
