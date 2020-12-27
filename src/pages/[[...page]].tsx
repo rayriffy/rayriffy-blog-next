@@ -83,9 +83,13 @@ const Page: NextPage<Props> = props => {
 
                 <div className="px-4 py-4 sm:px-6">
                   <h1 className="text-2xl text-gray-900">{blogPost.title}</h1>
-                  <span className="text-gray-600">
-                    Written by {blogPost.author.name} on{' '}
-                  </span>
+                  <p className="text-gray-600 pt-1">
+                    Written by{' '}
+                    <span className="text-gray-800">
+                      {blogPost.author.name}
+                    </span>{' '}
+                    on {blogPost.date}
+                  </p>
                   <p className="text-gray-600 py-2">{blogPost.subtitle}</p>
                 </div>
               </div>
