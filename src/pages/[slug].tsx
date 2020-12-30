@@ -19,8 +19,6 @@ const Page: NextPage<Props> = props => {
 
   const router = useRouter()
 
-  console.log({ blogPost })
-
   if (router.isFallback) {
     return (
       <div className="max-w-2xl mx-auto">
