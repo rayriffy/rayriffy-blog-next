@@ -4,9 +4,11 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { BlogPost } from '../core/@types/BlogPost'
 import { Pagination } from '../core/components/panigation'
 import { Preview } from '../core/components/preview'
+import { SEO } from '../core/components/seo'
+
+import { BlogPost } from '../core/@types/BlogPost'
 
 interface Props {
   preview: boolean
@@ -22,85 +24,88 @@ const Page: NextPage<Props> = props => {
   const { featuredBlogPost, blogPosts, panigate, preview } = props
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
-      {preview && <Preview />}
-      {featuredBlogPost !== null && (
-        <div className="max-w-4xl mx-auto">
-          <Link href={`/${featuredBlogPost.slug}`}>
-            <a>
-              <div className="rounded-none sm:rounded-lg overflow-hidden relative">
-                <div className="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
-                  <div className="space-y-0.5 md:space-y-2 text-white">
-                    <span className="uppercase text-mediu md:text-lg">
-                      Featured
-                    </span>
-                    <h1 className="text-2xl md:text-4xl">
-                      {featuredBlogPost.title}
-                    </h1>
-                    <p className="text-lg md:text-xl">
-                      {featuredBlogPost.subtitle}
-                    </p>
+    <React.Fragment>
+      <SEO />
+      <div className="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
+        {preview && <Preview />}
+        {featuredBlogPost !== null && (
+          <div className="max-w-4xl mx-auto">
+            <Link href={`/${featuredBlogPost.slug}`}>
+              <a>
+                <div className="rounded-none sm:rounded-lg overflow-hidden relative">
+                  <div className="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
+                    <div className="space-y-0.5 md:space-y-2 text-white">
+                      <span className="uppercase text-mediu md:text-lg">
+                        Featured
+                      </span>
+                      <h1 className="text-2xl md:text-4xl">
+                        {featuredBlogPost.title}
+                      </h1>
+                      <p className="text-lg md:text-xl">
+                        {featuredBlogPost.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="next-image-wrapper">
+                    <Image
+                      src={featuredBlogPost.banner.url}
+                      width={featuredBlogPost.banner.width}
+                      height={featuredBlogPost.banner.height}
+                      alt={featuredBlogPost.title}
+                      layout="responsive"
+                      priority
+                    />
                   </div>
                 </div>
-                <div className="next-image-wrapper">
+              </a>
+            </Link>
+          </div>
+        )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+          {blogPosts.map((blogPost, i) => (
+            <Link href={`/${blogPost.slug}`}>
+              <a>
+                <div
+                  className="rounded-none sm:rounded-lg overflow-hidden shadow-lg"
+                  key={`blog-${blogPost.slug}`}
+                >
                   <Image
-                    src={featuredBlogPost.banner.url}
-                    width={featuredBlogPost.banner.width}
-                    height={featuredBlogPost.banner.height}
-                    alt={featuredBlogPost.title}
+                    alt={blogPost.title}
+                    priority={i < 2}
                     layout="responsive"
-                    priority
+                    {...(blogPost.banner === null
+                      ? {
+                          src: '/default.jpg',
+                          width: 1200,
+                          height: 630,
+                        }
+                      : {
+                          src: blogPost.banner.url,
+                          ...blogPost.banner,
+                        })}
                   />
-                </div>
-              </div>
-            </a>
-          </Link>
-        </div>
-      )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
-        {blogPosts.map((blogPost, i) => (
-          <Link href={`/${blogPost.slug}`}>
-            <a>
-              <div
-                className="rounded-none sm:rounded-lg overflow-hidden shadow-lg"
-                key={`blog-${blogPost.slug}`}
-              >
-                <Image
-                  alt={blogPost.title}
-                  priority={i < 2}
-                  layout="responsive"
-                  {...(blogPost.banner === null
-                    ? {
-                        src: '/default.jpg',
-                        width: 1200,
-                        height: 630,
-                      }
-                    : {
-                        src: blogPost.banner.url,
-                        ...blogPost.banner,
-                      })}
-                />
 
-                <div className="px-4 py-4 sm:px-6">
-                  <h1 className="text-2xl text-gray-900">{blogPost.title}</h1>
-                  <p className="text-gray-600 pt-1">
-                    Written by{' '}
-                    <span className="text-gray-800">
-                      {blogPost.author.name}
-                    </span>{' '}
-                    on {blogPost.date}
-                  </p>
-                  <p className="text-gray-600 py-2">{blogPost.subtitle}</p>
+                  <div className="px-4 py-4 sm:px-6">
+                    <h1 className="text-2xl text-gray-900">{blogPost.title}</h1>
+                    <p className="text-gray-600 pt-1">
+                      Written by{' '}
+                      <span className="text-gray-800">
+                        {blogPost.author.name}
+                      </span>{' '}
+                      on {blogPost.date}
+                    </p>
+                    <p className="text-gray-600 py-2">{blogPost.subtitle}</p>
+                  </div>
                 </div>
-              </div>
-            </a>
-          </Link>
-        ))}
+              </a>
+            </Link>
+          ))}
+        </div>
+        <div className="pt-6">
+          <Pagination current={panigate.current} max={panigate.pages} />
+        </div>
       </div>
-      <div className="pt-6">
-        <Pagination current={panigate.current} max={panigate.pages} />
-      </div>
-    </div>
+    </React.Fragment>
   )
 }
 
