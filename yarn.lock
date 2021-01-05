@@ -1760,10 +1760,10 @@ data-uri-to-buffer@3.0.0:
   dependencies:
     buffer-from "^1.1.1"
 
-dayjs@^1.9.6:
-  version "1.9.6"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.9.6.tgz#6f0c77d76ac1ff63720dd1197e5cb87b67943d70"
-  integrity sha512-HngNLtPEBWRo8EFVmHFmSXAjtCX8rGNqeXQI0Gh7wCTSqwaKgPIDqu9m07wABVopNwzvOeCb+2711vQhDlcIXw==
+dayjs@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.1.tgz#114f678624842035396667a24eb1436814bc16fd"
+  integrity sha512-2xg7JrHQeLBQFkvTumLoy62x1siyeocc98QwjtURgvRqOPYmAkMUdmSjrOA+MlmL6QMQn5MUhDf6rNZNuPc1LQ==
 
 debug@4, debug@^4.0.0, debug@^4.2.0:
   version "4.3.1"
