@@ -102,6 +102,9 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
     const { iframeParser } = await import(
       '../core/services/remark/iframeParser'
     )
+    const { imageLazyParser } = await import(
+      '../core/services/remark/imageLazyParser'
+    )
 
     const { params, preview = false } = context
     const slug = params.slug as string
@@ -110,6 +113,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
     const parser = await remark()
       .use(html)
       .use(iframeParser)
+      .use(imageLazyParser)
       .process(blogPost.content)
 
     return {

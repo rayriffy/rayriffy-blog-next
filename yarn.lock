@@ -381,6 +381,11 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/html-entities@^1.2.16":
+  version "1.2.16"
+  resolved "https://registry.yarnpkg.com/@types/html-entities/-/html-entities-1.2.16.tgz#4d1fe208c4c33727ac4657e6f5d92bfe52427023"
+  integrity sha512-CI6fHfFvkTtX2Nlr4JBA6yIFTfA4p9E6w9ky64X6PrfXiTALhUh/SOa+Sxvv2p87m+y5AH71lAUrx0lSYx4hKQ==
+
 "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.6":
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"
@@ -2632,6 +2637,11 @@ hosted-git-info@^3.0.6:
   integrity sha512-fWqc0IcuXs+BmE9orLDyVykAG9GJtGLGuZAAqgcckPgv5xad4AcXGIv8galtQvlwutxSlaMcdw7BUtq2EIvqCQ==
   dependencies:
     lru-cache "^6.0.0"
+
+html-entities@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.0.2.tgz#3e0cda2387515b2dc6a947163fd51f6b48d80186"
+  integrity sha512-4IHIARvqG6F1gACykQUXc24KuAM8vbmKHq738CIVsPNBIp/xqmYFbIEEeA51SdjF+mxk/I52reZMNVK8Kzq9Ig==
 
 html-tags@^3.1.0:
   version "3.1.0"
