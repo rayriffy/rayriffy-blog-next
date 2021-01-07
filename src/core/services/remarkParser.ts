@@ -44,46 +44,49 @@ export const remarkParser: Plugin = () => {
 
     await Promise.all(
       nodes.map(async node => {
-        if (node.value.startsWith('niconico: ')) {
-          createIframe(
-            node,
-            `https://embed.nicovideo.jp/watch/${node.value.slice(
-              'niconico: '.length
-            )}`
-          )
-        } else if (node.value.startsWith('youtube: ')) {
-          createIframe(
-            node,
-            `https://www.youtube.com/embed/${node.value.slice(
-              'youtube: '.length
-            )}`
-          )
-        } else if (node.value.startsWith('oembed: ')) {
-          const providers: OembedProvider[] = JSON.parse(
-            fs.readFileSync(providerCachePath).toString()
-          )
-          const extractedUrl = node.value.slice('oembed: '.length)
+        const matcher = node.value.match(/(\w+):\s?(.+)/)
+        if (matcher !== null) {
+          const provider = matcher[1]
+          const targetValue = matcher[2]
 
-          // get provider endpoint
-          const endpoint = getProviderEndpoint(extractedUrl, providers)
+          switch (provider) {
+            case 'niconico':
+              createIframe(
+                node,
+                `https://embed.nicovideo.jp/watch/${targetValue}`
+              )
+              break
+            case 'youtube':
+              createIframe(node, `https://www.youtube.com/embed/${targetValue}`)
+              break
+            case 'oembed':
+              const providers: OembedProvider[] = JSON.parse(
+                fs.readFileSync(providerCachePath).toString()
+              )
+              const extractedUrl = node.value.slice('oembed: '.length)
 
-          if (endpoint !== undefined) {
-            // call api
-            const oembedResult: OembedResult = await fetch(
-              `${endpoint}?${querystring.stringify({
-                format: 'json',
-                url: extractedUrl,
-              })}`
-            ).then(o => o.json())
+              // get provider endpoint
+              const endpoint = getProviderEndpoint(extractedUrl, providers)
 
-            // override node
-            node.type = `html`
-            node.value = `
-            <div class="flex justify-center">${oembedResult.html}</div>
-          `
+              if (endpoint !== undefined) {
+                // call api
+                const oembedResult: OembedResult = await fetch(
+                  `${endpoint}?${querystring.stringify({
+                    format: 'json',
+                    url: extractedUrl,
+                  })}`
+                ).then(o => o.json())
+
+                // override node
+                node.type = `html`
+                node.value = `
+                <div class="flex justify-center">${oembedResult.html}</div>
+              `
+              }
+              break
+            default:
+              console.log(node.value)
           }
-        } else if (/\w+: [\w\+\-\_\=\!\@]+/.test(node.value)) {
-          // console.log(node)
         }
       })
     )
