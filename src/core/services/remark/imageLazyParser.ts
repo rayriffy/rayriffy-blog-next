@@ -12,8 +12,6 @@ export const imageLazyParser: Plugin = () => {
     // transform
     const nodes = selectAll('[type=image]', markdownAST) as ImageNode[]
 
-    console.log(sample(nodes))
-
     await Promise.all(
       nodes.map(async node => {
         const html = `<img src="${encode(node.url)}" alt="${encode(
