@@ -18,6 +18,9 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
+  "types": [
+    "express"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
