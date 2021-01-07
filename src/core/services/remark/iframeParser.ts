@@ -5,11 +5,11 @@ import { Plugin } from 'unified'
 import { selectAll } from 'unist-util-select'
 import querystring from 'querystring'
 
-import { getProviderEndpoint } from './getProviderEndpoint'
+import { getProviderEndpoint } from '../getProviderEndpoint'
 
-import { MarkdownNode } from '../@types/MarkdownNode'
-import { OembedProvider } from '../@types/OembedProvider'
-import { OembedResult } from '../@types/OembedResult'
+import { MarkdownNode } from '../../@types/MarkdownNode'
+import { OembedProvider } from '../../@types/OembedProvider'
+import { OembedResult } from '../../@types/OembedResult'
 
 const createIframe = (node: MarkdownNode, url: string) => {
   node.type = `html`
@@ -28,7 +28,7 @@ const createIframe = (node: MarkdownNode, url: string) => {
 
 const providerCachePath = path.join(process.cwd(), '.next/cache/providers.json')
 
-export const remarkParser: Plugin = () => {
+export const iframeParser: Plugin = () => {
   const transform = async (markdownAST: MarkdownNode) => {
     // get oembed providers into cache
     if (!fs.existsSync(providerCachePath)) {

@@ -99,7 +99,9 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
     const { default: remark } = await import('remark')
     const { default: html } = await import('remark-html')
-    const { remarkParser } = await import('../core/services/remarkParser')
+    const { iframeParser } = await import(
+      '../core/services/remark/iframeParser'
+    )
 
     const { params, preview = false } = context
     const slug = params.slug as string
@@ -107,7 +109,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
     const blogPost = await getBlogPost(slug, preview)
     const parser = await remark()
       .use(html)
-      .use(remarkParser)
+      .use(iframeParser)
       .process(blogPost.content)
 
     return {
