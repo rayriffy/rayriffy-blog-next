@@ -84,8 +84,6 @@ export const iframeParser: Plugin = () => {
               `
               }
               break
-            default:
-              console.log(node.value)
           }
         }
       })
