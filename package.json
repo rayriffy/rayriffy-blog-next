@@ -28,7 +28,7 @@
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.1.0",
     "cors": "^2.8.5",
-    "dayjs": "^1.10.1",
+    "dayjs": "^1.10.3",
     "gatsby-remark-embed-video": "^3.0.10",
     "html-entities": "^2.0.2",
     "lodash": "^4.17.20",
