@@ -3,18 +3,18 @@ import React from 'react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 
 import { SEO } from '../core/components/seo'
 import { Preview } from '../core/components/preview'
-// import { Adsense } from '../core/components/adsense'
+import { Adsense } from '../core/components/adsense'
 
 import { BlogPost } from '../core/@types/BlogPost'
 
-const Adsense = dynamic(
-  () => import('../core/components/adsense').then(o => o.Adsense),
-  { ssr: false }
-)
+// const Adsense = dynamic(
+//   () => import('../core/components/adsense').then(o => o.Adsense),
+//   { ssr: false }
+// )
 
 interface Props {
   preview: boolean
@@ -83,15 +83,20 @@ const Page: NextPage<Props> = props => {
                     ))}
                   </div>
                 </div>
-                {/* <section className="flex justify-center py-4">
+                <section className="flex justify-center py-4">
                   <Adsense
                     client="ca-pub-2837414306121160"
+                    style={{
+                      width: 300,
+                      height: 250,
+                      minHeight: '250px',
+                    }}
                     slot="4010112179"
                     format="fluid"
                     layoutKey="-fb+5w+4e-db+86"
                     className="block"
                   />
-                </section> */}
+                </section>
                 <article
                   className="pt-6 prose prose-blue max-w-3xl mx-auto"
                   dangerouslySetInnerHTML={{
@@ -102,7 +107,8 @@ const Page: NextPage<Props> = props => {
                   <Adsense
                     client="ca-pub-2837414306121160"
                     style={{
-                      width: '80%',
+                      width: 468,
+                      height: 200,
                     }}
                     slot="5740521463"
                     format="auto"
