@@ -6,6 +6,7 @@ import Image from 'next/image'
 
 import { SEO } from '../core/components/seo'
 import { Preview } from '../core/components/preview'
+import { Adsense } from '../core/components/adsense'
 
 import { BlogPost } from '../core/@types/BlogPost'
 
@@ -76,12 +77,30 @@ const Page: NextPage<Props> = props => {
                     ))}
                   </div>
                 </div>
+                <section>
+                  <Adsense
+                    client="ca-pub-2837414306121160"
+                    slot="4010112179"
+                    format="fluid"
+                    layoutKey="-fb+5w+4e-db+86"
+                    className="block my-6"
+                  />
+                </section>
                 <article
                   className="pt-6 prose prose-blue max-w-3xl mx-auto"
                   dangerouslySetInnerHTML={{
                     __html: blogPost.content,
                   }}
                 />
+                <section>
+                  <Adsense
+                    client="ca-pub-2837414306121160"
+                    slot="5740521463"
+                    format="auto"
+                    responsive="true"
+                    className="block my-6"
+                  />
+                </section>
               </div>
             </div>
           </div>
