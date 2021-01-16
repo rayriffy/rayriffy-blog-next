@@ -77,13 +77,13 @@ const Page: NextPage<Props> = props => {
                     ))}
                   </div>
                 </div>
-                <section>
+                <section className="py-4">
                   <Adsense
                     client="ca-pub-2837414306121160"
                     slot="4010112179"
                     format="fluid"
                     layoutKey="-fb+5w+4e-db+86"
-                    className="block my-6"
+                    className="block"
                   />
                 </section>
                 <article
@@ -92,13 +92,13 @@ const Page: NextPage<Props> = props => {
                     __html: blogPost.content,
                   }}
                 />
-                <section>
+                <section className="py-4">
                   <Adsense
                     client="ca-pub-2837414306121160"
                     slot="5740521463"
                     format="auto"
                     responsive="true"
-                    className="block my-6"
+                    className="block"
                   />
                 </section>
               </div>
