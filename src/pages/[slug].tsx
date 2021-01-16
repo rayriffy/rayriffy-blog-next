@@ -77,7 +77,7 @@ const Page: NextPage<Props> = props => {
                     ))}
                   </div>
                 </div>
-                <section className="flex justify-center py-4">
+                {/* <section className="flex justify-center py-4">
                   <Adsense
                     client="ca-pub-2837414306121160"
                     slot="4010112179"
@@ -85,7 +85,7 @@ const Page: NextPage<Props> = props => {
                     layoutKey="-fb+5w+4e-db+86"
                     className="block"
                   />
-                </section>
+                </section> */}
                 <article
                   className="pt-6 prose prose-blue max-w-3xl mx-auto"
                   dangerouslySetInnerHTML={{
