@@ -77,7 +77,7 @@ const Page: NextPage<Props> = props => {
                     ))}
                   </div>
                 </div>
-                <section className="py-4">
+                <section className="flex justify-center py-4">
                   <Adsense
                     client="ca-pub-2837414306121160"
                     slot="4010112179"
@@ -92,7 +92,7 @@ const Page: NextPage<Props> = props => {
                     __html: blogPost.content,
                   }}
                 />
-                <section className="py-4">
+                <section className="flex justify-center py-4">
                   <Adsense
                     client="ca-pub-2837414306121160"
                     slot="5740521463"
