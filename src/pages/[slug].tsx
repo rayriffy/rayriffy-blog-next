@@ -101,6 +101,9 @@ const Page: NextPage<Props> = props => {
                 <section className="flex justify-center py-4">
                   <Adsense
                     client="ca-pub-2837414306121160"
+                    style={{
+                      width: '80%',
+                    }}
                     slot="5740521463"
                     format="auto"
                     responsive="true"
