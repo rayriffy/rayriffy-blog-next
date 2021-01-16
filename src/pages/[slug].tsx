@@ -3,18 +3,12 @@ import React from 'react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-// import dynamic from 'next/dynamic'
 
 import { SEO } from '../core/components/seo'
 import { Preview } from '../core/components/preview'
 import { Adsense } from '../core/components/adsense'
 
 import { BlogPost } from '../core/@types/BlogPost'
-
-// const Adsense = dynamic(
-//   () => import('../core/components/adsense').then(o => o.Adsense),
-//   { ssr: false }
-// )
 
 interface Props {
   preview: boolean
