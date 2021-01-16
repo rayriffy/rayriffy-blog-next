@@ -84,18 +84,20 @@ const Page: NextPage<Props> = props => {
                   </div>
                 </div>
                 <section className="flex justify-center py-4">
-                  <Adsense
-                    client="ca-pub-2837414306121160"
-                    style={{
-                      width: 300,
-                      height: 250,
-                      minHeight: '250px',
-                    }}
-                    slot="4010112179"
-                    format="fluid"
-                    layoutKey="-fb+5w+4e-db+86"
-                    className="block"
-                  />
+                  <div>
+                    <Adsense
+                      client="ca-pub-2837414306121160"
+                      style={{
+                        width: 300,
+                        height: 250,
+                        minHeight: '250px',
+                      }}
+                      slot="4010112179"
+                      format="fluid"
+                      layoutKey="-fb+5w+4e-db+86"
+                      className="block"
+                    />
+                  </div>
                 </section>
                 <article
                   className="pt-6 prose prose-blue max-w-3xl mx-auto"
@@ -104,17 +106,19 @@ const Page: NextPage<Props> = props => {
                   }}
                 />
                 <section className="flex justify-center py-4">
-                  <Adsense
-                    client="ca-pub-2837414306121160"
-                    style={{
-                      width: 468,
-                      height: 200,
-                    }}
-                    slot="5740521463"
-                    format="auto"
-                    responsive="true"
-                    className="block"
-                  />
+                  <div>
+                    <Adsense
+                      client="ca-pub-2837414306121160"
+                      style={{
+                        width: 468,
+                        height: 200,
+                      }}
+                      slot="5740521463"
+                      format="auto"
+                      responsive="true"
+                      className="block"
+                    />
+                  </div>
                 </section>
               </div>
             </div>
