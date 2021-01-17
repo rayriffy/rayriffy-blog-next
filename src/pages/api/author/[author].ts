@@ -27,11 +27,12 @@ const api: NextApiHandler = async (req, res) => {
   await cors(req, res)
 
   try {
+    const itemsPerPage = 6
     const query = `
       query ($author: String) {
         blogPostCollection(where: { author: { user: $author } }, skip: ${
-          Number(page) * 2
-        }, limit: 6, order: [date_DESC]) {
+          (Number(page) - 1) * itemsPerPage
+        }, limit: ${itemsPerPage}, order: [date_DESC]) {
           items {
             ${blogPostField}
           }
