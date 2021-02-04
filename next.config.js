@@ -19,6 +19,9 @@ module.exports = withPlugins([[withPreact]], {
   images: {
     domains: ['images.ctfassets.net'],
   },
+  future: {
+    webpack5: true,
+  },
   experimental: {
     optimizeFonts: true,
   },
