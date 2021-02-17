@@ -116,17 +116,17 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
   )
 
   const { default: dayjs } = await import('dayjs')
-  const { chunk, get } = await import('lodash')
+  const { default: _ } = await import('lodash')
 
   const { params, preview = false } = context
-  const targetPage = Number(get(params, 'page[1]', '1'))
+  const targetPage = Number(_.get(params, 'page[1]', '1'))
 
   const [featuredBlogPost, blogPosts] = await Promise.all([
     getFeaturedBlogPost(),
     getBlogPosts(preview),
   ])
-  const blogChunks = chunk(blogPosts, 6)
-  const blogChunk = get(blogChunks, targetPage - 1)
+  const blogChunks = _.chunk(blogPosts, 6)
+  const blogChunk = _.get(blogChunks, targetPage - 1)
 
   return {
     props: {
@@ -148,10 +148,11 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const { getBlogPosts } = await import('../core/services/getBlogPosts')
 
-  const { chunk } = await import('lodash')
+  const { default: _ } = await import('lodash')
 
   const blogPosts = await getBlogPosts()
-  const blogChunks = chunk(blogPosts, 6)
+
+  const blogChunks = _.chunk(blogPosts, 6)
 
   return {
     paths: blogChunks.map((_, i) => {

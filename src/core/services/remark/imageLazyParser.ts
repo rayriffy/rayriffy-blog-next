@@ -1,7 +1,6 @@
 import { Plugin } from 'unified'
 import { selectAll } from 'unist-util-select'
 
-import { sample } from 'lodash'
 import { encode } from 'html-entities'
 
 import { MarkdownNode } from '../../@types/MarkdownNode'

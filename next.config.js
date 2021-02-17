@@ -1,8 +1,10 @@
 const withPlugins = require('next-compose-plugins')
 
-const withPreact = require('next-plugin-preact')
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
-module.exports = withPlugins([[withPreact]], {
+module.exports = withPlugins([[withBundleAnalyzer]], {
   target: 'serverless',
   async rewrites() {
     return [
