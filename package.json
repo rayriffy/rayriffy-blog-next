@@ -35,7 +35,7 @@
     "lodash": "^4.17.21",
     "next": "^10.0.7",
     "next-compose-plugins": "^2.2.1",
-    "postcss": "^8.2.6",
+    "postcss": "^8.2.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "remark": "^13.0.0",
