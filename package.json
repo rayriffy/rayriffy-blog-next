@@ -31,7 +31,7 @@
     "cors": "^2.8.5",
     "dayjs": "^1.10.4",
     "gatsby-remark-embed-video": "^3.1.1",
-    "html-entities": "^2.1.0",
+    "html-entities": "^2.1.1",
     "lodash": "^4.17.21",
     "next": "^10.0.9",
     "next-compose-plugins": "^2.2.1",
