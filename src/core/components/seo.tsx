@@ -26,27 +26,28 @@ export const SEO: React.FC<Props> = props => {
 
   return (
     <Head>
-      <title>{transformedTitle}</title>
-      <meta name="title" content={transformedTitle} />
-      <meta name="description" content={description} />
+      <title key="head-title">{transformedTitle}</title>
+      <meta key="meta:title" name="title" content={transformedTitle} />
+      <meta key="meta:description" name="description" content={description} />
 
       <link rel="icon" href="/icon.png" />
 
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={router.asPath} />
-      <meta property="og:title" content={transformedTitle} />
-      <meta property="og:description" content={description} />
+      <meta key="og:type" property="og:type" content="website" />
+      <meta key="og:url" property="og:url" content={router.asPath} />
+      <meta key="og:title" property="og:title" content={transformedTitle} />
+      <meta key="og:description" property="og:description" content={description} />
 
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={router.asPath} />
-      <meta property="twitter:title" content={transformedTitle} />
-      <meta property="twitter:description" content={description} />
+      <meta key="twitter:card" property="twitter:card" content="summary_large_image" />
+      <meta key="twitter:url" property="twitter:url" content={router.asPath} />
+      <meta key="twitter:title" property="twitter:title" content={transformedTitle} />
+      <meta key="twitter:description" property="twitter:description" content={description} />
 
-      <meta property="og:image" content={image} />
-      <meta property="twitter:image" content={image} />
+      <meta key="og:image" property="og:image" content={image} />
+      <meta key="twitter:image" property="twitter:image" content={image} />
 
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link key="gf-preconnect" rel="preconnect" href="https://fonts.gstatic.com" />
       <link
+        key="gf-sheets"
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Niramit:wght@400;700&display=swap"
       />
