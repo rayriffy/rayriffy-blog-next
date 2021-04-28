@@ -42,7 +42,7 @@
     "sitemap": "^6.4.0",
     "tailwindcss": "^2.1.1",
     "unist-util-select": "^3.0.4",
-    "webpack": "^5.32.0"
+    "webpack": "^5.35.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
