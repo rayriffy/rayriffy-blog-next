@@ -41,7 +41,7 @@
     "remark-html": "^13.0.1",
     "sitemap": "^7.0.0",
     "tailwindcss": "^2.1.2",
-    "unist-util-select": "3.0.4",
+    "unist-util-select": "4.0.0",
     "webpack": "^5.36.2"
   },
   "devDependencies": {
