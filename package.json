@@ -51,7 +51,7 @@
     "@types/express": "^4.17.11",
     "@types/html-entities": "^1.2.16",
     "@types/lodash": "^4.14.168",
-    "@types/node": "^15.0.1",
+    "@types/node": "^15.3.0",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
     "encoding": "^0.1.13",
