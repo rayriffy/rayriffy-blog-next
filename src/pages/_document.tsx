@@ -23,12 +23,6 @@ class NextDocument extends Document {
               `,
             }}
           />
-          {this.props.__NEXT_DATA__.page === '/[slug]' && (
-            <script
-              async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-            />
-          )}
         </body>
       </Html>
     )
