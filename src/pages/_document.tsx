@@ -18,15 +18,17 @@ class NextDocument extends Document {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-    
+
                 gtag('config', 'G-J24WPTD619');
               `,
             }}
           />
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
+          {this.props.__NEXT_DATA__.page === '/[slug]' && (
+            <script
+              async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            />
+          )}
         </body>
       </Html>
     )
