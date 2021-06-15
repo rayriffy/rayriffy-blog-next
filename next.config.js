@@ -21,9 +21,6 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
   images: {
     domains: ['images.ctfassets.net'],
   },
-  future: {
-    webpack5: true,
-  },
   experimental: {
     optimizeFonts: true,
   },

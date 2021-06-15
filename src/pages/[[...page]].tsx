@@ -63,11 +63,10 @@ const Page: NextPage<Props> = props => {
         )}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
           {blogPosts.map((blogPost, i) => (
-            <Link href={`/${blogPost.slug}`}>
+            <Link href={`/${blogPost.slug}`} key={`blog-${blogPost.slug}`}>
               <a>
                 <div
                   className="rounded-none sm:rounded-lg overflow-hidden shadow-lg"
-                  key={`blog-${blogPost.slug}`}
                 >
                   <Image
                     alt={blogPost.title}
