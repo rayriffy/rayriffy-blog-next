@@ -45,13 +45,6 @@ export const SEO: React.FC<Props> = props => {
       <meta key="og:image" property="og:image" content={image} />
       <meta key="twitter:image" property="twitter:image" content={image} />
 
-      <link key="gf-preconnect" rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        key="gf-sheets"
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Niramit:wght@400;700&display=swap"
-      />
-
       {children}
     </Head>
   )
