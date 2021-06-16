@@ -1,5 +1,6 @@
 import { BlogPost } from '../@types/BlogPost'
 import { blogPostField } from '../constants/blogPostField'
+import { getBlurImage } from './getBlurImage'
 
 interface RawQueryResult {
   data: {
@@ -41,5 +42,17 @@ export const getBlogPosts = async (preview = false) => {
     }
   ).then(o => o.json())
 
-  return queryResult.data.blogPostCollection.items
+  const res = await Promise.all(queryResult.data.blogPostCollection.items.map(async blog => {
+    const blurBanner = await getBlurImage(blog.banner)
+
+    return {
+      ...blog,
+      banner: {
+        ...blog.banner,
+        placeholder: blurBanner,
+      },
+    }
+  }))
+
+  return res
 }

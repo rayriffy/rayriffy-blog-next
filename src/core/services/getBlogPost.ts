@@ -1,5 +1,6 @@
 import { BlogPost } from '../@types/BlogPost'
 import { blogPostField } from '../constants/blogPostField'
+import { getBlurImage } from './getBlurImage'
 
 interface RawQueryResult {
   data: {
@@ -47,6 +48,15 @@ export const getBlogPost = async (slug: string, preview = false) => {
   if (queryResult.data.blogPostCollection.items.length === 0) {
     throw 'no data'
   } else {
-    return queryResult.data.blogPostCollection.items[0]
+    const blog = queryResult.data.blogPostCollection.items[0]
+    const blurBanner = await getBlurImage(blog.banner)
+
+    return {
+      ...blog,
+      banner: {
+        ...blog.banner,
+        placeholder: blurBanner,
+      },
+    }
   }
 }

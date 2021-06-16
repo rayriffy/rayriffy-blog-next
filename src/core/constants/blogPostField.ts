@@ -6,6 +6,7 @@ banner {
   url
   width
   height
+  placeholder: url(transform: { quality: 70 })
 }
 title
 subtitle

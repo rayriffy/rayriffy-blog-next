@@ -51,6 +51,8 @@ const Page: NextPage<Props> = props => {
                       src={featuredBlogPost.banner.url}
                       width={featuredBlogPost.banner.width}
                       height={featuredBlogPost.banner.height}
+                      placeholder="blur"
+                      blurDataURL={featuredBlogPost.banner.placeholder}
                       alt={featuredBlogPost.title}
                       layout="responsive"
                       priority
@@ -81,6 +83,8 @@ const Page: NextPage<Props> = props => {
                       : {
                           src: blogPost.banner.url,
                           ...blogPost.banner,
+                          placeholder: 'blur',
+                          blurDataURL: blogPost.banner.placeholder,
                         })}
                   />
 
