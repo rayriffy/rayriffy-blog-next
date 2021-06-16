@@ -74,18 +74,12 @@ const Page: NextPage<Props> = props => {
                     alt={blogPost.title}
                     priority={i < 2}
                     layout="responsive"
-                    {...(blogPost.banner === null
-                      ? {
-                          src: '/default.jpg',
-                          width: 1200,
-                          height: 630,
-                        }
-                      : {
-                          src: blogPost.banner.url,
-                          ...blogPost.banner,
-                          placeholder: 'blur',
-                          blurDataURL: blogPost.banner.placeholder,
-                        })}
+                    {...{
+                      src: blogPost.banner.url,
+                      ...blogPost.banner,
+                      placeholder: 'blur',
+                      blurDataURL: blogPost.banner.placeholder,
+                    }}
                   />
 
                   <div className="px-4 py-4 sm:px-6">
