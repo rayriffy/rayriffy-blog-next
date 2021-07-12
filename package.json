@@ -27,7 +27,7 @@
     "@next/bundle-analyzer": "^11.0.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
-    "autoprefixer": "^10.2.6",
+    "autoprefixer": "^10.3.1",
     "cors": "^2.8.5",
     "dayjs": "^1.10.5",
     "html-entities": "^2.3.2",
