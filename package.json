@@ -48,7 +48,7 @@
     "unist-util-select": "3.0.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
+    "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
