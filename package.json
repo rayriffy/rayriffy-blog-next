@@ -41,7 +41,7 @@
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",
     "react-ssr-prepass": "npm:preact-ssr-prepass",
-    "remark": "^13.0.0",
+    "remark": "^14.0.1",
     "remark-html": "^13.0.1",
     "sitemap": "^7.0.0",
     "tailwindcss": "^2.2.7",
