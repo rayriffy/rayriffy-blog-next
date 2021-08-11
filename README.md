@@ -52,12 +52,12 @@ To develop
 ---
 
 ```
-yarn dev
+pnpm dev
 ```
 
 To build
 ---
 
 ```
-yarn build
+pnpm build
 ```
