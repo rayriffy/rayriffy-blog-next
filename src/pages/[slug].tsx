@@ -118,7 +118,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
     const { default: dayjs } = await import('dayjs')
 
-    const { default: remark } = await import('remark')
+    const { remark } = await import('remark')
     const { default: html } = await import('remark-html')
     const { iframeParser } = await import(
       '../core/services/remark/iframeParser'
@@ -133,8 +133,8 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
     const blogPost = await getBlogPost(slug, preview)
     const parser = await remark()
       .use(html)
-      .use(iframeParser)
-      .use(imageLazyParser)
+      .use(iframeParser as unknown)
+      .use(imageLazyParser as unknown)
       .process(blogPost.content)
 
     return {

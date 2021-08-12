@@ -23,5 +23,6 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
   },
   experimental: {
     optimizeFonts: true,
+    esmExternals: true,
   },
 })

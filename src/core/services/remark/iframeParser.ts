@@ -3,7 +3,7 @@ import path from 'path'
 
 import { Plugin } from 'unified'
 import { selectAll } from 'unist-util-select'
-import querystring from 'querystring'
+import { stringify } from 'querystring'
 
 import { getProviderEndpoint } from '../getProviderEndpoint'
 
@@ -71,7 +71,7 @@ export const iframeParser: Plugin = () => {
               if (endpoint !== undefined) {
                 // call api
                 const oembedResult: OembedResult = await fetch(
-                  `${endpoint}?${querystring.stringify({
+                  `${endpoint}?${stringify({
                     format: 'json',
                     url: extractedUrl,
                   })}`
