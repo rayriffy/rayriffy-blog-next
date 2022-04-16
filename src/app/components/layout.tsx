@@ -1,4 +1,4 @@
-import React from 'react'
+import { FunctionComponent, Fragment, PropsWithChildren } from 'react'
 
 import Link from 'next/link'
 
@@ -7,11 +7,11 @@ import { Logo } from './logo'
 
 import { headerNavationItems } from '../constants/headerNavationItems'
 
-export const AppLayout: React.FC = props => {
+export const AppLayout: FunctionComponent<PropsWithChildren<{}>> = props => {
   const { children } = props
 
   return (
-    <React.Fragment>
+    <Fragment>
       <div className="py-12 space-y-8">
         <header className="max-w-md mx-auto">
           <div className="flex justify-center">
@@ -50,6 +50,6 @@ export const AppLayout: React.FC = props => {
         <main>{children}</main>
         <Footer />
       </div>
-    </React.Fragment>
+    </Fragment>
   )
 }

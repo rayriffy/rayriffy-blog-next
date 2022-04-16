@@ -9,8 +9,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "partytown copylib public/~partytown && next build",
-    "partytown": "partytown copylib --no-debug public/~partytown"
+    "build": "next build"
   },
   "husky": {
     "hooks": {

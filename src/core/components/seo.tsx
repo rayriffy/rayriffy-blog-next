@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { FunctionComponent, PropsWithChildren, useMemo } from 'react'
 
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -9,7 +9,7 @@ interface Props {
   image?: string
 }
 
-export const SEO: React.FC<Props> = props => {
+export const SEO: FunctionComponent<PropsWithChildren<Props>> = props => {
   const {
     title,
     description = 'The Nerdy Blogger',

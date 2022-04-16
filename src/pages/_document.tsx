@@ -24,24 +24,6 @@ const Document: NextPage = () => {
             `,
           }}
         />
-
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-J24WPTD619"
-          type="text/partytown"
-        ></script>
-        <script
-          type="text/partytown"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'G-J24WPTD619');
-            `,
-          }}
-        />
       </Head>
       <body>
         <Main />
