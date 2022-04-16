@@ -5,7 +5,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withPlugins([[withBundleAnalyzer]], {
-  target: 'serverless',
   async rewrites() {
     return [
       {
@@ -22,7 +21,7 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
     domains: ['images.ctfassets.net'],
   },
   experimental: {
+    nextScriptWorkers: true,
     optimizeFonts: true,
-    esmExternals: true,
   },
 })

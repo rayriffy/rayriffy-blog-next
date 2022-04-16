@@ -144,3 +144,7 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node,macos
 .vercel
+
+public/sw.js
+public/workbox*
+public/~partytown
