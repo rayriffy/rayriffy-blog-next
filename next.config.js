@@ -12,6 +12,18 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
         destination: '/api/sitemap',
       },
       {
+        source: '/feed.rss',
+        destination: '/api/feed/rss',
+      },
+      {
+        source: '/feed.atom',
+        destination: '/api/feed/atom',
+      },
+      {
+        source: '/feed.json',
+        destination: '/api/feed/json',
+      },
+      {
         source: '/robots.txt',
         destination: '/api/robots',
       },
