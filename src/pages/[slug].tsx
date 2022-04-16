@@ -105,7 +105,7 @@ const Page: NextPage<Props> = props => {
       </div>
       <Script
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        strategy="worker"
+        strategy="afterInteractive"
         onLoad={() => setIsAdsensMount(true)}
       />
     </React.Fragment>

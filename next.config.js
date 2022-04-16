@@ -17,11 +17,13 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
       },
     ]
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: ['images.ctfassets.net'],
   },
   experimental: {
-    nextScriptWorkers: true,
     optimizeFonts: true,
   },
 })
