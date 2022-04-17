@@ -157,7 +157,9 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const { getBlogPosts } = await import('../core/services/getBlogPosts')
 
-  const blogPosts = await getBlogPosts()
+  const blogPosts = await getBlogPosts({
+    noBlur: true
+  })
 
   return {
     paths: blogPosts.map(blogPost => ({

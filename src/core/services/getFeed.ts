@@ -4,7 +4,9 @@ import { Feed } from "feed";
 import { getBlogPosts } from "./getBlogPosts";
 
 export const getFeed = async (): Promise<Feed> => {
-  const blogPosts = await getBlogPosts()
+  const blogPosts = await getBlogPosts({
+    noBlur: true
+  })
 
   const feedStream = new Feed({
     title: 'Riffy Blog',

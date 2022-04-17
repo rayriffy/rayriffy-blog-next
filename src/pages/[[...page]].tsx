@@ -120,7 +120,7 @@ export const getStaticProps: GetStaticProps<Props> = async context => {
 
   const [featuredBlogPost, blogPosts] = await Promise.all([
     getFeaturedBlogPost(),
-    getBlogPosts(preview),
+    getBlogPosts({preview}),
   ])
   const blogChunks = _.chunk(blogPosts, 6)
   const blogChunk = _.get(blogChunks, targetPage - 1)
@@ -147,7 +147,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const { default: _ } = await import('lodash')
 
-  const blogPosts = await getBlogPosts()
+  const blogPosts = await getBlogPosts({
+    noBlur: true,
+  })
 
   const blogChunks = _.chunk(blogPosts, 6)
 

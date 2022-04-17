@@ -5,7 +5,9 @@ import { getBlogPosts } from '../../core/services/getBlogPosts'
 
 const api: NextApiHandler = async (req, res) => {
   try {
-    const blogPosts = await getBlogPosts()
+    const blogPosts = await getBlogPosts({
+      noBlur: true
+    })
 
     const sitemapStream = new SitemapStream({
       hostname: 'https://' + req.headers.host,

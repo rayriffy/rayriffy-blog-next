@@ -10,7 +10,14 @@ interface RawQueryResult {
   }
 }
 
-export const getBlogPosts = async (preview = false) => {
+interface Option {
+  preview?: boolean
+  noBlur?: boolean
+}
+
+export const getBlogPosts = async (options: Option = {}) => {
+  const { preview = false, noBlur = false } = options
+
   const query = `
     query {
       blogPostCollection(order: [date_DESC], preview: ${
@@ -43,13 +50,11 @@ export const getBlogPosts = async (preview = false) => {
   ).then(o => o.json())
 
   const res = await Promise.all(queryResult.data.blogPostCollection.items.map(async blog => {
-    const blurBanner = await getBlurImage(blog.banner)
-
     return {
       ...blog,
       banner: {
         ...blog.banner,
-        placeholder: blurBanner,
+        placeholder: noBlur ? '' : await getBlurImage(blog.banner),
       },
     }
   }))
