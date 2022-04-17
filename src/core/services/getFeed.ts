@@ -30,7 +30,7 @@ export const getFeed = async (): Promise<Feed> => {
   blogPosts.forEach(blogPost => {
     feedStream.addItem({
       title: blogPost.title,
-      id: blogPost.slug,
+      id: `https://blog.rayriffy.com/${blogPost.slug}`,
       link: `https://blog.rayriffy.com/${blogPost.slug}`,
       description: blogPost.subtitle,
       author: [{
