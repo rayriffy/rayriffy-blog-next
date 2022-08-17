@@ -20,7 +20,7 @@ export const headerNavationItems: HeaderNavationItem[] = [
   },
   {
     key: 'music',
-    href: 'https://l.rayriffy.com/jpops',
+    href: 'https://music.apple.com/jp/playlist/riffys-playlist/pl.u-gxblkLDC5PkYPXL',
     name: '♪',
     external: true,
   },
