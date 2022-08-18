@@ -16,7 +16,7 @@ export const getFeed = async (): Promise<Feed> => {
     language: "th",
     image: "https://blog.rayriffy.com/default.jpg",
     favicon: 'https://blog.rayriffy.com/favicon.ico',
-    copyright: `© 2020 - ${new Date().getFullYear()} Phumrapee Limpianchop`,
+    copyright: `© ${new Date().getFullYear()} Phumrapee Limpianchop`,
     generator: 'Vercel',
     feedLinks: {
       json: "https://blog.rayriffy.com/feed.json",

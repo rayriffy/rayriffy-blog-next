@@ -44,7 +44,7 @@ export const Footer: React.FC = React.memo(() => {
           </a>
         </div>
         <p className="mt-8 text-center text-base text-gray-500">
-          &copy; 2020 Phumrapee Limpianchop
+          &copy; {new Date().getFullYear()} Phumrapee Limpianchop
         </p>
       </div>
     </footer>
