@@ -3,7 +3,6 @@ import Logo from './logo.astro'
 import Footer from './footer.astro'
 
 import { headerNavationItems } from '../constants/headerNavationItems'
-import { SITE_TITLE } from '../../config'
 
 import '../../styles/tailwind.css'
 
@@ -19,7 +18,7 @@ const {
   image = 'https://blog.rayriffy.com/default.jpg',
 } = Astro.props
 
-const transformedTitle = title === '' ? SITE_TITLE : `${SITE_TITLE} · ${title}`
+const transformedTitle = title === '' ? 'Riffy Blog' : `Riffy Blog · ${title}`
 ---
 
 <!DOCTYPE html>
