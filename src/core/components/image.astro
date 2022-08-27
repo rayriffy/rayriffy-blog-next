@@ -5,7 +5,12 @@ export interface Props extends astroHTML.JSX.ImgHTMLAttributes {
 
 type CDNImageType = 'jpg' | 'png' | 'webp' | 'avif'
 
-const { src, srcsetSize = [640, 750, 828, 1080, 1200], ...rest } = Astro.props
+const {
+  src,
+  srcsetSize = [640, 750, 828, 1080, 1200],
+  loading = 'lazy',
+  ...rest
+} = Astro.props
 
 const getContentfulURL = (url: string, type: CDNImageType, size?: number) => {
   const builtOption = Object.fromEntries([
@@ -43,7 +48,7 @@ const generateSourceSet = (url: string, type: CDNImageType) =>
   />
   <img
     src={typeof src === 'string' ? getContentfulURL(src, 'jpg') : undefined}
-    loading="lazy"
+    loading={loading}
     {...rest}
   />
 </picture>

@@ -45,7 +45,10 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 		...page,
 		props: {
 			...page.props,
-			featuredBlogPost: i !== 0 ? null : sortedBlogPosts.find(o => o.frontmatter.featured === true)
+			featuredBlogPost:
+				i !== 0
+					? null
+					: sortedBlogPosts.find(o => o.frontmatter.featured === true),
 		},
 		params: {
 			page: i === 0 ? undefined : `pages/${i + 1}`,
@@ -58,15 +61,14 @@ const { page, featuredBlogPost } = Astro.props
 
 <AppLayout>
 	<div class="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
-		{featuredBlogPost !== null && (
-			<div class="max-w-4xl mx-auto">
+		{
+			featuredBlogPost !== null && (
+				<div class="max-w-4xl mx-auto">
 					<a href={featuredBlogPost.url}>
 						<div class="rounded-none sm:rounded-lg overflow-hidden relative">
 							<div class="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
 								<div class="space-y-0.5 md:space-y-2 text-white">
-									<span class="uppercase text-mediu md:text-lg">
-										Featured
-									</span>
+									<span class="uppercase text-mediu md:text-lg">Featured</span>
 									<h1 class="text-2xl md:text-4xl">
 										{featuredBlogPost.frontmatter.title}
 									</h1>
@@ -85,8 +87,9 @@ const { page, featuredBlogPost } = Astro.props
 							</div>
 						</div>
 					</a>
-			</div>
-		)}
+				</div>
+			)
+		}
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
 			{
 				page.data.map(({ frontmatter, url }, i) => (
@@ -97,7 +100,7 @@ const { page, featuredBlogPost } = Astro.props
 								src={frontmatter.banner[0]}
 								width={frontmatter.banner[1]}
 								height={frontmatter.banner[2]}
-								loading={i === 0 ? "eager" : "lazy"}
+								loading={i === 0 ? null : 'lazy'}
 							/>
 							<div class="px-4 py-4 sm:px-6">
 								<h1 class="text-2xl text-gray-900">{frontmatter.title}</h1>
