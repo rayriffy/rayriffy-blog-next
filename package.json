@@ -24,6 +24,7 @@
     "@tailwindcss/typography": "^0.5.4",
     "@types/node-fetch": "^2.6.2",
     "astro": "^1.0.9",
+    "astro-compress": "^1.0.5",
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.1",
     "node-fetch": "2.6.7",

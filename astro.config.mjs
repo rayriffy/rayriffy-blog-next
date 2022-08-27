@@ -1,14 +1,16 @@
 import { defineConfig } from 'astro/config'
-
 /* Astro plugins */
+
 import vercel from '@astrojs/vercel/edge'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import partytown from '@astrojs/partytown'
-
 /* Remark plugins */
+
 import { iframeParser } from './src/modules/remark/iframeParser.mjs'
+
+import compress from 'astro-compress'
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,10 +30,15 @@ export default defineConfig({
         forward: ['dataLayer.push'],
       },
     }),
+    compress({
+      img: false,
+      svg: false,
+      js: false,
+    }),
   ],
   markdown: {
     remarkPlugins: [iframeParser],
     rehypePlugins: [],
-    extendDefaultPlugins: true
-  }
+    extendDefaultPlugins: true,
+  },
 })
