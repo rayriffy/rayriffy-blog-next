@@ -19,7 +19,9 @@ export default defineConfig({
   adapter: process.env.NODE_ENV === 'production' ? vercel() : undefined,
   integrations: [
     mdx(),
-    sitemap(),
+    sitemap({
+      filter: page => !page.includes('/pages/')
+    }),
     tailwind({
       config: {
         applyBaseStyles: false,
