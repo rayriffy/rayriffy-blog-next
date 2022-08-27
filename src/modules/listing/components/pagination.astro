@@ -28,6 +28,7 @@ const startPoint =
         href={
           startPoint + i === 0 ? prefix : `${prefix}pages/${startPoint + i + 1}`
         }
+        rel="prefetch"
       >
         <Page {...{ startPoint, i, current }} />
       </a>

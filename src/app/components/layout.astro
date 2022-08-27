@@ -5,6 +5,7 @@ import Footer from './footer.astro'
 import { headerNavationItems } from '../constants/headerNavationItems'
 
 import '../../styles/tailwind.css'
+import '../../styles/font.css'
 
 export interface Props {
   title?: string
@@ -32,7 +33,7 @@ const transformedTitle = title === '' ? 'Riffy Blog' : `Riffy Blog · ${title}`
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&family=Niramit:wght@400;500;700&display=swap" rel="stylesheet" media="screen">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&family=Niramit:wght@400;500;700&display=swap" rel="stylesheet" media="screen"> -->
 
     <title>{transformedTitle}</title>
 
@@ -72,7 +73,7 @@ const transformedTitle = title === '' ? 'Riffy Blog' : `Riffy Blog · ${title}`
     <div class="py-12 space-y-8">
       <header class="max-w-md mx-auto">
         <div class="flex justify-center">
-          <a href="/" aria-label="Logo">
+          <a href="/" aria-label="Logo" rel="prefetch">
             <Logo className="w-20" />
           </a>
         </div>
@@ -88,7 +89,7 @@ const transformedTitle = title === '' ? 'Riffy Blog' : `Riffy Blog · ${title}`
                   {item.name}
                 </a>
               ) : (
-                <a href={item.href}>{item.name}</a>
+                <a href={item.href} rel="prefetch">{item.name}</a>
               )
             )
           }

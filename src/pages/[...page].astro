@@ -64,7 +64,7 @@ const { page, featuredBlogPost } = Astro.props
 		{
 			featuredBlogPost !== null && (
 				<div class="max-w-4xl mx-auto">
-					<a href={featuredBlogPost.url}>
+					<a href={featuredBlogPost.url} rel="prefetch">
 						<div class="rounded-none sm:rounded-lg overflow-hidden relative">
 							<div class="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
 								<div class="space-y-0.5 md:space-y-2 text-white">
@@ -93,7 +93,7 @@ const { page, featuredBlogPost } = Astro.props
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
 			{
 				page.data.map(({ frontmatter, url }, i) => (
-					<a href={url}>
+					<a href={url} rel="prefetch">
 						<div class="rounded-none sm:rounded-lg overflow-hidden shadow-lg">
 							<Image
 								alt={frontmatter.title}
