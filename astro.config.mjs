@@ -20,7 +20,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
-      filter: page => !page.includes('/pages/')
+      filter: page => !page.includes('/pages/'),
     }),
     tailwind({
       config: {
