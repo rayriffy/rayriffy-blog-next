@@ -1,6 +1,7 @@
-import { BlogPost } from '../@types/BlogPost'
 import { blogPostField } from '../constants/blogPostField'
 import { getBlurImage } from './getBlurImage'
+
+import type { BlogPost } from '../@types/BlogPost'
 
 interface RawQueryResult {
   data: {
