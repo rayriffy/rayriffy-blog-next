@@ -16,10 +16,19 @@ interface Metadata {
 export const get = async () => {
   const items = await import.meta.glob('./*.md')
 
-  const rssItems = await Promise.all(
-    Object.entries(items).map(async ([_, caller]) => {
-      const callerResult = (await caller()) as Metadata
-      const { frontmatter, url } = callerResult
+  const readItems = await Promise.all(
+    Object.entries(items).map(
+      async ([_, caller]) => (await caller()) as Metadata
+    )
+  )
+  const rssItems = readItems
+    .sort(
+      (a, b) =>
+        new Date(b.frontmatter.date).getTime() -
+        new Date(a.frontmatter.date).getTime()
+    )
+    .map(item => {
+      const { frontmatter, url } = item
 
       return {
         title: frontmatter.title,
@@ -28,7 +37,6 @@ export const get = async () => {
         pubDate: new Date(frontmatter.date),
       }
     })
-  )
 
   return rss({
     title: 'Riffy Blog',
