@@ -18,20 +18,11 @@ export interface Props {
 }
 
 const { banner, title, subtitle } = Astro.props.frontmatter
-
-const isDevelopment = process.env.NODE_ENV === 'development'
 ---
 
 <AppLayout title={title} description={subtitle} image={banner[0]}>
   <div class="space-y-6">
     <div class="max-w-4xl mx-auto">
-      {
-        isDevelopment && (
-          <div class="my-8 p-6 bg-red-50 rounded-xl break-all">
-            {JSON.stringify(Astro.props.frontmatter)}
-          </div>
-        )
-      }
       <div class="bg-white shadow-xl rounded-lg overflow-hidden">
         <img src={banner[0]} width={banner[1]} height={banner[2]} />
         <div class="pt-4 pb-8 px-4 sm:px-6 lg:px-8">

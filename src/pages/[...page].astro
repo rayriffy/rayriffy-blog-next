@@ -14,17 +14,18 @@ interface Frontmatter {
 	categories: string[]
 	banner: [string, number, number] // [url, width, height]
 	featured: boolean
-
-	file: string
-	url: string
 }
 
 export interface Props {
 	page: Page<{
 		frontmatter: Frontmatter
+		file: string
+		url: string
 	}>
 	featuredBlogPost: {
 		frontmatter: Frontmatter
+		file: string
+		url: string
 	} | null
 }
 
@@ -58,7 +59,7 @@ const { page, featuredBlogPost } = Astro.props
 	<div class="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
 		{featuredBlogPost !== null && (
 			<div class="max-w-4xl mx-auto">
-					<a href={featuredBlogPost.frontmatter.url}>
+					<a href={featuredBlogPost.url}>
 						<div class="rounded-none sm:rounded-lg overflow-hidden relative">
 							<div class="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
 								<div class="space-y-0.5 md:space-y-2 text-white">
@@ -87,8 +88,8 @@ const { page, featuredBlogPost } = Astro.props
 		)}
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
 			{
-				page.data.map(({ frontmatter }, i) => (
-					<a href={`/${frontmatter.url}`}>
+				page.data.map(({ frontmatter, url }, i) => (
+					<a href={url}>
 						<div class="rounded-none sm:rounded-lg overflow-hidden shadow-lg">
 							<img
 								alt={frontmatter.title}
