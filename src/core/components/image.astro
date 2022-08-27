@@ -1,0 +1,49 @@
+---
+export interface Props extends astroHTML.JSX.ImgHTMLAttributes {
+  srcsetSize?: number[]
+}
+
+type CDNImageType = 'jpg' | 'png' | 'webp' | 'avif'
+
+const { src, srcsetSize = [640, 750, 828, 1080, 1200], ...rest } = Astro.props
+
+const getContentfulURL = (url: string, type: CDNImageType, size?: number) => {
+  const builtOption = Object.fromEntries([
+    ['q', 80],
+    ['fm', type],
+    ...(size === undefined ? [] : [['w', size]]),
+  ])
+  const params = new URLSearchParams(builtOption).toString()
+
+  return `${url.startsWith('//') ? 'https:' : ''}${url}?${params}`
+}
+
+const generateSourceSet = (url: string, type: CDNImageType) =>
+  srcsetSize
+    .map(size => [getContentfulURL(url, type, size), `${size}w`].join(' '))
+    .join(', ')
+---
+
+<picture>
+  <source
+    type="image/avif"
+    srcset={typeof src === 'string'
+      ? generateSourceSet(src, 'avif')
+      : undefined}
+  />
+  <source
+    type="image/webp"
+    srcset={typeof src === 'string'
+      ? generateSourceSet(src, 'webp')
+      : undefined}
+  />
+  <source
+    type="image/jpeg"
+    srcset={typeof src === 'string' ? generateSourceSet(src, 'jpg') : undefined}
+  />
+  <img
+    src={typeof src === 'string' ? getContentfulURL(src, 'jpg') : undefined}
+    loading="lazy"
+    {...rest}
+  />
+</picture>

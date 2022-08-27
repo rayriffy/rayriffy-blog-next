@@ -1,4 +1,3 @@
-import { stringify } from 'querystring'
 import { selectAll } from 'unist-util-select'
 import { encode } from 'html-entities'
 
@@ -22,7 +21,7 @@ const getContentfulURL = (url, type, size) => {
     ['fm', type],
     ...(size === undefined ? [] : [['w', size]]),
   ])
-  const params = stringify(builtOption)
+  const params = new URLSearchParams(builtOption).toString()
 
   return `${url.startsWith('//') ? 'https:' : ''}${url}?${params}`
 }

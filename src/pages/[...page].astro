@@ -2,6 +2,7 @@
 import dayjs from 'dayjs'
 
 import AppLayout from '../app/components/layout.astro'
+import Image from '../core/components/image.astro'
 import Pagination from '../modules/listing/components/pagination.astro'
 
 import type { GetStaticPaths, Page } from 'astro'
@@ -75,7 +76,7 @@ const { page, featuredBlogPost } = Astro.props
 								</div>
 							</div>
 							<div class="next-image-wrapper">
-								<img
+								<Image
 									src={featuredBlogPost.frontmatter.banner[0]}
 									width={featuredBlogPost.frontmatter.banner[1]}
 									height={featuredBlogPost.frontmatter.banner[2]}
@@ -91,7 +92,7 @@ const { page, featuredBlogPost } = Astro.props
 				page.data.map(({ frontmatter, url }, i) => (
 					<a href={url}>
 						<div class="rounded-none sm:rounded-lg overflow-hidden shadow-lg">
-							<img
+							<Image
 								alt={frontmatter.title}
 								src={frontmatter.banner[0]}
 								width={frontmatter.banner[1]}
