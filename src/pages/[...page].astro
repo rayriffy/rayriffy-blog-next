@@ -101,7 +101,7 @@ const { page, featuredBlogPost } = Astro.props
 								<p class="text-gray-600 pt-1">
 									Written by{' '}
 									<span class="text-gray-800">{frontmatter.author}</span> on{' '}
-									{frontmatter.date}
+									{dayjs(frontmatter.date).format('DD MMM YYYY')}
 								</p>
 								<p class="text-gray-600 py-2">{frontmatter.subtitle}</p>
 							</div>
