@@ -4,7 +4,7 @@ import * as path from 'path'
 import { config } from 'dotenv'
 
 import { reporter } from './services/reporter'
-import { getBlogPosts } from '../src/core/services/getBlogPosts'
+import { getBlogPosts } from './services/getBlogPosts'
 
 // setup env
 config()
@@ -21,9 +21,7 @@ const stringifyArray = (strings: (string | number)[]) => {
   const command = process.argv[process.argv.length - 1]
   switch (command) {
     case 'build':
-      const blogPosts = await getBlogPosts({
-        noBlur: true,
-      })
+      const blogPosts = await getBlogPosts()
       await Promise.all(
         blogPosts.map(blogPost => {
           const header = {
@@ -39,6 +37,7 @@ const stringifyArray = (strings: (string | number)[]) => {
               blogPost.banner.url,
               blogPost.banner.width,
               blogPost.banner.height,
+              blogPost.banner.placeholder,
             ]),
             featured: blogPost.featured ? 'true' : 'false',
           }

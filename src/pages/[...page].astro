@@ -13,7 +13,7 @@ interface Frontmatter {
 	date: string
 	author: string
 	categories: string[]
-	banner: [string, number, number] // [url, width, height]
+	banner: [string, number, number, string] // [url, width, height, placeholder]
 	featured: boolean
 }
 
@@ -82,6 +82,7 @@ const { page, featuredBlogPost } = Astro.props
 									src={featuredBlogPost.frontmatter.banner[0]}
 									width={featuredBlogPost.frontmatter.banner[1]}
 									height={featuredBlogPost.frontmatter.banner[2]}
+									placeholder={featuredBlogPost.frontmatter.banner[3]}
 									alt={featuredBlogPost.frontmatter.title}
 								/>
 							</div>
@@ -100,6 +101,7 @@ const { page, featuredBlogPost } = Astro.props
 								src={frontmatter.banner[0]}
 								width={frontmatter.banner[1]}
 								height={frontmatter.banner[2]}
+								placeholder={frontmatter.banner[3]}
 								loading={i === 0 ? null : 'lazy'}
 							/>
 							<div class="px-4 py-4 sm:px-6">

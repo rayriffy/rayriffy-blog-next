@@ -1,9 +1,9 @@
 import fetch from 'node-fetch'
 
-import { blogPostField } from '../constants/blogPostField'
-import { getBlurImage } from './getBlurImage'
+import { blogPostField } from '../../src/core/constants/blogPostField'
+import { getBlurImage } from '../../src/core/services/getBlurImage'
 
-import type { BlogPost } from '../@types/BlogPost'
+import type { BlogPost } from '../../src/core/@types/BlogPost'
 
 interface RawQueryResult {
   data: {

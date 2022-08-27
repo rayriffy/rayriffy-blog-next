@@ -1,3 +1,5 @@
+import fetch from 'node-fetch'
+
 import type { Asset } from '../@types/Asset'
 
 export const getBlurImage = async (image: Asset) => {

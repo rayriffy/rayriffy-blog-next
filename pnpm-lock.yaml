@@ -15,6 +15,7 @@ specifiers:
   '@types/node-fetch': ^2.6.2
   astro: ^1.0.9
   astro-compress: ^1.0.5
+  blurhash: ^1.1.5
   dayjs: ^1.11.5
   dotenv: ^16.0.1
   node-fetch: 2.6.7
@@ -38,6 +39,7 @@ devDependencies:
   '@types/node-fetch': 2.6.2
   astro: 1.0.9
   astro-compress: 1.0.5
+  blurhash: 1.1.5
   dayjs: 1.11.5
   dotenv: 16.0.1
   node-fetch: 2.6.7
@@ -1303,6 +1305,10 @@ packages:
       buffer: 6.0.3
       inherits: 2.0.4
       readable-stream: 3.6.0
+    dev: true
+
+  /blurhash/1.1.5:
+    resolution: {integrity: sha512-a+LO3A2DfxTaTztsmkbLYmUzUeApi0LZuKalwbNmqAHR6HhJGMt1qSV/R3wc+w4DL28holjqO3Bg74aUGavGjg==}
     dev: true
 
   /boolbase/1.0.0:

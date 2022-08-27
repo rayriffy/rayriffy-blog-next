@@ -1,6 +1,7 @@
 ---
 export interface Props extends astroHTML.JSX.ImgHTMLAttributes {
   srcsetSize?: number[]
+  placeholder?: string
 }
 
 type CDNImageType = 'jpg' | 'png' | 'webp' | 'avif'
@@ -9,6 +10,7 @@ const {
   src,
   srcsetSize = [640, 750, 828, 1080, 1200],
   loading = 'lazy',
+  placeholder = null,
   ...rest
 } = Astro.props
 
@@ -29,26 +31,30 @@ const generateSourceSet = (url: string, type: CDNImageType) =>
     .join(', ')
 ---
 
-<picture>
-  <source
-    type="image/avif"
-    srcset={typeof src === 'string'
-      ? generateSourceSet(src, 'avif')
-      : undefined}
-  />
-  <source
-    type="image/webp"
-    srcset={typeof src === 'string'
-      ? generateSourceSet(src, 'webp')
-      : undefined}
-  />
-  <source
-    type="image/jpeg"
-    srcset={typeof src === 'string' ? generateSourceSet(src, 'jpg') : undefined}
-  />
-  <img
-    src={typeof src === 'string' ? getContentfulURL(src, 'jpg') : undefined}
-    loading={loading}
-    {...rest}
-  />
-</picture>
+<div class="relative w-full aspect-[1500/788]">
+  {placeholder !== null && <img src={placeholder} class="w-full aspect-[1500/788] absolute" />}
+  <picture>
+    <source
+      type="image/avif"
+      srcset={typeof src === 'string'
+        ? generateSourceSet(src, 'avif')
+        : undefined}
+    />
+    <source
+      type="image/webp"
+      srcset={typeof src === 'string'
+        ? generateSourceSet(src, 'webp')
+        : undefined}
+    />
+    <source
+      type="image/jpeg"
+      srcset={typeof src === 'string' ? generateSourceSet(src, 'jpg') : undefined}
+    />
+    <img
+      src={typeof src === 'string' ? getContentfulURL(src, 'jpg') : undefined}
+      loading={loading}
+      class="absolute"
+      {...rest}
+    />
+  </picture>
+</div>
