@@ -1,0 +1,28 @@
+---
+import dayjs from 'dayjs'
+
+export interface Props {
+  title: string
+  author: string
+  date: string
+  categories: string[]
+}
+
+const { title, author, date, categories } = Astro.props
+---
+
+<div class="pt-2">
+  <h1 class="text-4xl">{title}</h1>
+  <span class="text-gray-600">
+    Written by {author} on {dayjs(date).format('DD MMM YYYY')}
+  </span>
+  <div class="flex flex-wrap space-x-2 space-y-2 pt-3">
+    {
+      categories.map(category => (
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800">
+          {category}
+        </span>
+      ))
+    }
+  </div>
+</div>

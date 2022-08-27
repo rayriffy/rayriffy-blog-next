@@ -1,0 +1,83 @@
+---
+import Adsense from './adsense.astro'
+import Heading from './heading.astro'
+import AppLayout from '../../../app/components/layout.astro'
+
+export interface Props {
+  frontmatter: {
+    title: string
+    subtitle: string
+    date: string
+    author: string
+    categories: string[]
+    banner: [string, number, number] // [url, width, height]
+
+    file: string
+    url: string
+  }
+}
+
+const { banner, title, subtitle } = Astro.props.frontmatter
+
+const isDevelopment = process.env.NODE_ENV === 'development'
+---
+
+<AppLayout title={title} description={subtitle} image={banner[0]}>
+  <div class="space-y-6">
+    <div class="max-w-4xl mx-auto">
+      {
+        isDevelopment && (
+          <div class="my-8 p-6 bg-red-50 rounded-xl break-all">
+            {JSON.stringify(Astro.props.frontmatter)}
+          </div>
+        )
+      }
+      <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+        <img src={banner[0]} width={banner[1]} height={banner[2]} />
+        <div class="pt-4 pb-8 px-4 sm:px-6 lg:px-8">
+          <Heading {...Astro.props.frontmatter} />
+
+          <section class="flex justify-center py-4">
+            <div>
+              <Adsense
+                client="ca-pub-2837414306121160"
+                style={{
+                  width: 300,
+                  height: 250,
+                  minHeight: '250px',
+                }}
+                slot="4010112179"
+                format="fluid"
+                layoutKey="-fb+5w+4e-db+86"
+                class="block"
+              />
+            </div>
+          </section>
+          <article class="pt-6 prose prose-blue max-w-3xl mx-auto">
+            <slot />
+          </article>
+          <section class="flex justify-center py-4">
+            <div>
+              <Adsense
+                client="ca-pub-2837414306121160"
+                style={{
+                  width: 468,
+                  height: 200,
+                }}
+                slot="5740521463"
+                format="auto"
+                responsive="true"
+                class="block"
+              />
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2837414306121160"
+    crossorigin="anonymous"
+  ></script>
+</AppLayout>

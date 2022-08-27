@@ -1,4 +1,4 @@
-import { Node } from 'unist'
+import type { Node } from 'unist'
 
 export interface ImageNode extends Node {
   title: string | null

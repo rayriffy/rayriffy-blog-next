@@ -1,0 +1,31 @@
+---
+export interface Props extends astroHTML.JSX.InsHTMLAttributes {
+  client: string
+  slot: string
+  format?: string
+  layout?: string
+  layoutKey?: string
+  responsive?: 'true' | 'false'
+}
+
+const {
+  client,
+  slot,
+  format = 'auto',
+  layout,
+  layoutKey,
+  responsive = 'false',
+  class: className,
+  ...rest
+} = Astro.props
+---
+
+<ins
+  class={`${className} adsbygoogle`}
+  data-ad-client={client}
+  data-ad-slot={slot}
+  data-ad-format={format}
+  data-ad-layout={layout}
+  data-ad-layout-key={layoutKey}
+  data-full-width-responsive={responsive}
+  {...rest}></ins>

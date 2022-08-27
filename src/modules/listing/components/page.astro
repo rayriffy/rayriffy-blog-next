@@ -1,0 +1,19 @@
+---
+export interface Props {
+  startPoint: number
+  current: number
+  i: number
+}
+
+const { startPoint, current, i } = Astro.props
+
+const pageNumber = startPoint + i + 1
+---
+
+<div
+  class={`cursor-pointer ${
+    pageNumber === current ? 'text-gray-900' : 'text-gray-500'
+  }`}
+>
+  {pageNumber}
+</div>

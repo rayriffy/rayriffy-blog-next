@@ -1,0 +1,106 @@
+---
+import Logo from './logo.astro'
+import Footer from './footer.astro'
+
+import { headerNavationItems } from '../constants/headerNavationItems'
+
+import '../../styles/tailwind.css'
+
+export interface Props {
+  title?: string
+  description?: string
+  image?: string
+}
+
+const {
+  title = '',
+  description = 'The Nerdy Blogger',
+  image = 'https://blog.rayriffy.com/default.jpg',
+} = Astro.props
+
+const transformedTitle = title === '' ? 'Riffy Blog' : `Riffy Blog · ${title}`
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Niramit:wght@400;700&display=swap"
+      media="screen,print"
+    />
+
+    <title>{transformedTitle}</title>
+
+    <meta name="title" content={transformedTitle} />
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={transformedTitle} />
+    <meta property="og:description" content={description} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={transformedTitle} />
+    <meta property="twitter:description" content={description} />
+
+    <meta property="og:image" content={image} />
+    <meta property="twitter:image" content={image} />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-J24WPTD619"
+      type="text/partytown"
+    ></script>
+    <script
+      type="text/partytown"
+      set:html={`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+  
+        gtag('config', 'G-J24WPTD619');
+      `}
+    ></script>
+  </head>
+  <body>
+    <div class="py-12 space-y-8">
+      <header class="max-w-md mx-auto">
+        <div class="flex justify-center">
+          <a href="/" aria-label="Logo">
+            <Logo className="w-20" />
+          </a>
+        </div>
+        <div
+          class="flex justify-center space-x-6 pt-4 text-gray-900 hover:text-gray-700 uppercase text-sm select-none"
+        >
+          {
+            headerNavationItems.map(item =>
+              item.disabled ? (
+                <span class="cursor-not-allowed">{item.name}</span>
+              ) : item.external ? (
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  {item.name}
+                </a>
+              ) : (
+                <a href={item.href}>{item.name}</a>
+              )
+            )
+          }
+        </div>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

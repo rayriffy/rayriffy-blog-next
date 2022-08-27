@@ -1,6 +1,9 @@
-import { BlogPost } from '../@types/BlogPost'
+import fetch from 'node-fetch'
+
 import { blogPostField } from '../constants/blogPostField'
 import { getBlurImage } from './getBlurImage'
+
+import type { BlogPost } from '../@types/BlogPost'
 
 interface RawQueryResult {
   data: {
@@ -30,7 +33,7 @@ export const getBlogPosts = async (options: Option = {}) => {
     }
   `
 
-  const queryResult: RawQueryResult = await fetch(
+  const queryResult = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
       method: 'POST',
@@ -47,7 +50,7 @@ export const getBlogPosts = async (options: Option = {}) => {
         query,
       }),
     }
-  ).then(o => o.json())
+  ).then(o => o.json() as Promise<RawQueryResult>)
 
   const res = await Promise.all(queryResult.data.blogPostCollection.items.map(async blog => {
     return {

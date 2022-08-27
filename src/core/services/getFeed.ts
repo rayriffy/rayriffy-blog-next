@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import { Feed } from "feed";
+import dayjs from "dayjs"
+import { Feed } from "feed"
 
 import { getBlogPosts } from "./getBlogPosts";
 

@@ -1,4 +1,4 @@
-import { Asset } from '../@types/Asset'
+import type { Asset } from '../@types/Asset'
 
 export const getBlurImage = async (image: Asset) => {
   const res = await fetch('https://api.rayriffy.com/api/blurhash', {
@@ -6,7 +6,7 @@ export const getBlurImage = async (image: Asset) => {
     headers: {
       'Content-Type': 'application/json',
       Accepts: 'application/json',
-      Authorization: process.env.BLURHASH_TOKEN
+      Authorization: process.env.BLURHASH_TOKEN ?? '',
     },
     body: JSON.stringify({
       url: image.placeholder

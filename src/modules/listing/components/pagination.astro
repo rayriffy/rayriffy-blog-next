@@ -1,0 +1,36 @@
+---
+import Page from './page.astro'
+
+export interface Props {
+  max: number
+  current: number
+  className?: string
+  prefix?: string
+}
+
+const { max, current, className, prefix = '/' } = Astro.props
+
+const pageLength = max > 5 ? 5 : max
+const startPoint =
+  max > 5
+    ? current - 2 < 1
+      ? 0
+      : current + 2 > max
+      ? max - pageLength
+      : current - (pageLength - 2)
+    : 0
+---
+
+<div class={`flex justify-center space-x-8 ${className}`}>
+  {
+    Array.from({ length: pageLength }, (_, i) => (
+      <a
+        href={
+          startPoint + i === 0 ? prefix : `${prefix}pages/${startPoint + i + 1}`
+        }
+      >
+        <Page {...{ startPoint, i, current }} />
+      </a>
+    ))
+  }
+</div>
