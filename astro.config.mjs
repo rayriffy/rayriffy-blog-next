@@ -9,6 +9,7 @@ import partytown from '@astrojs/partytown'
 /* Remark plugins */
 
 import { iframeParser } from './src/modules/remark/iframeParser.mjs'
+import { imageParser } from './src/modules/remark/imageParser.mjs'
 
 import compress from 'astro-compress'
 
@@ -37,7 +38,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [iframeParser],
+    remarkPlugins: [iframeParser, imageParser],
     rehypePlugins: [],
     extendDefaultPlugins: true,
   },
