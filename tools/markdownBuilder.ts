@@ -35,8 +35,12 @@ const stringifyArray = (strings: (string | number)[]) => {
             categories: stringifyArray(
               blogPost.categoryCollection.items.map(o => o.name)
             ),
-            banner: stringifyArray([blogPost.banner.url, blogPost.banner.width, blogPost.banner.height]),
-            featured: blogPost.featured ? 'true' : 'false'
+            banner: stringifyArray([
+              blogPost.banner.url,
+              blogPost.banner.width,
+              blogPost.banner.height,
+            ]),
+            featured: blogPost.featured ? 'true' : 'false',
           }
 
           const builtContent = `---\n${Object.entries(header)

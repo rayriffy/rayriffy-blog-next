@@ -9,7 +9,7 @@ export const getBlurImage = async (image: Asset) => {
       Authorization: process.env.BLURHASH_TOKEN ?? '',
     },
     body: JSON.stringify({
-      url: image.placeholder
+      url: image.placeholder,
     }),
   }).then(o => o.json())
 

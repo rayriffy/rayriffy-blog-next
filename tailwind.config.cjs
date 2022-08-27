@@ -2,9 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: [
-		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue,mjs}'
-	],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue,mjs}'],
   darkMode: 'media',
   mode: 'jit',
   theme: {
@@ -30,7 +28,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }

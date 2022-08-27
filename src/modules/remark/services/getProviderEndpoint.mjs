@@ -1,12 +1,9 @@
 /**
  * Get provider endpoint if available
- * @param {string} url 
- * @param {import('../@types/OembedProvider').OembedProvider[]} providers 
+ * @param {string} url
+ * @param {import('../@types/OembedProvider').OembedProvider[]} providers
  */
-export const getProviderEndpoint = (
-  url,
-  providers
-) => {
+export const getProviderEndpoint = (url, providers) => {
   let transformedEndpoint = undefined
 
   for (const provider of providers || []) {

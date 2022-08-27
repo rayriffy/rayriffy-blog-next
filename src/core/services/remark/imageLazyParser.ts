@@ -12,7 +12,7 @@ const isContentfulImage = (url: string) => url.includes('images.ctfassets.net')
 const getContentfulURL = (url: string, type: 'jpg' | 'png' | 'webp') => {
   const options = stringify({
     q: 80,
-    fm: type
+    fm: type,
   })
 
   return `${url}?${options}`
@@ -25,9 +25,9 @@ export const imageLazyParser: Plugin = () => {
 
     await Promise.all(
       nodes.map(async node => {
-        const baseHtml = `<img src="${encode(getContentfulURL(node.url, 'jpg'))}" alt="${encode(
-          node.alt
-        )}" loading="lazy" />`
+        const baseHtml = `<img src="${encode(
+          getContentfulURL(node.url, 'jpg')
+        )}" alt="${encode(node.alt)}" loading="lazy" />`
 
         node.type = 'html'
         node.children = undefined
@@ -35,8 +35,12 @@ export const imageLazyParser: Plugin = () => {
         if (isContentfulImage(node.url)) {
           const html = `
             <picture>
-              <source type="image/webp" srcset="${encode(getContentfulURL(node.url, 'webp'))}">
-              <source type="image/jpeg" srcset="${encode(getContentfulURL(node.url, 'jpg'))}">
+              <source type="image/webp" srcset="${encode(
+                getContentfulURL(node.url, 'webp')
+              )}">
+              <source type="image/jpeg" srcset="${encode(
+                getContentfulURL(node.url, 'jpg')
+              )}">
               ${baseHtml}
             </picture>
           `

@@ -52,15 +52,17 @@ export const getBlogPosts = async (options: Option = {}) => {
     }
   ).then(o => o.json() as Promise<RawQueryResult>)
 
-  const res = await Promise.all(queryResult.data.blogPostCollection.items.map(async blog => {
-    return {
-      ...blog,
-      banner: {
-        ...blog.banner,
-        placeholder: noBlur ? '' : await getBlurImage(blog.banner),
-      },
-    }
-  }))
+  const res = await Promise.all(
+    queryResult.data.blogPostCollection.items.map(async blog => {
+      return {
+        ...blog,
+        banner: {
+          ...blog.banner,
+          placeholder: noBlur ? '' : await getBlurImage(blog.banner),
+        },
+      }
+    })
+  )
 
   return res
 }
