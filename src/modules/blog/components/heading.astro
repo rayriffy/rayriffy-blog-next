@@ -16,10 +16,10 @@ const { title, author, date, categories } = Astro.props
   <span class="text-gray-600">
     Written by {author} on {dayjs(date).format('DD MMM YYYY')}
   </span>
-  <div class="flex flex-wrap space-x-2 space-y-2 pt-3">
+  <div class="flex flex-wrap space-x-2 pt-3 -mt-1">
     {
       categories.map(category => (
-        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-blue-100 text-blue-800 my-1">
           {category}
         </span>
       ))
