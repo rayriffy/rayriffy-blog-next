@@ -22,7 +22,7 @@ const stringifyArray = (strings: (string | number)[]) => {
   switch (command) {
     case 'build':
       const blogPosts = await getBlogPosts({
-        preview: ['true', '1'].includes(process.env.CI ?? '')
+        preview: !['true', '1'].includes(process.env.CI ?? '')
       })
       await Promise.all(
         blogPosts.map(blogPost => {
