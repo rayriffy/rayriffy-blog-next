@@ -21,7 +21,9 @@ const stringifyArray = (strings: (string | number)[]) => {
   const command = process.argv[process.argv.length - 1]
   switch (command) {
     case 'build':
-      const blogPosts = await getBlogPosts()
+      const blogPosts = await getBlogPosts({
+        preview: process.env.CI !== 'true'
+      })
       await Promise.all(
         blogPosts.map(blogPost => {
           const header = {
