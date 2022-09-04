@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply bg-gray-50 !important;
+}
+
 h1,
 h2,
 h3,
