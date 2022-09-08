@@ -1,6 +1,6 @@
-import { Asset } from './Asset'
-import { Author } from './Author'
-import { Category } from './Category'
+import type { Asset } from './Asset'
+import type { Author } from './Author'
+import type { Category } from './Category'
 
 export interface BlogPost {
   slug: string
@@ -13,5 +13,8 @@ export interface BlogPost {
   content: string
   categoryCollection: {
     items: Category[]
+  }
+  sys: {
+    publishedAt: string | null
   }
 }

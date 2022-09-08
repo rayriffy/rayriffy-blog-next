@@ -15,6 +15,7 @@ interface Frontmatter {
 	categories: string[]
 	banner: [string, number, number, string] // [url, width, height, placeholder]
 	featured: boolean
+	draft: boolean
 }
 
 export interface Props {
@@ -95,7 +96,8 @@ const { page, featuredBlogPost } = Astro.props
 			{
 				page.data.map(({ frontmatter, url }, i) => (
 					<a href={url} rel="prefetch">
-						<div class="rounded-none sm:rounded-lg overflow-hidden shadow-md bg-white">
+						<div class="rounded-none sm:rounded-lg overflow-hidden shadow-md bg-white relative">
+							{frontmatter.draft && (<span class="absolute text-white bg-black py-1.5 px-3 z-10 text-sm font-bold italic rounded-br-lg">DRAFT</span>)}
 							<Image
 								alt={frontmatter.title}
 								src={frontmatter.banner[0]}

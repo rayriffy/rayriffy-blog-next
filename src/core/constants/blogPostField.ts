@@ -21,4 +21,7 @@ categoryCollection {
     ${categoryField}
   }
 }
+sys {
+  publishedAt
+}
 `

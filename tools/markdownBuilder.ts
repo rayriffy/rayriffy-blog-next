@@ -42,6 +42,7 @@ const stringifyArray = (strings: (string | number)[]) => {
               blogPost.banner.placeholder,
             ]),
             featured: blogPost.featured ? 'true' : 'false',
+            draft: blogPost.sys.publishedAt === null
           }
 
           const builtContent = `---\n${Object.entries(header)
