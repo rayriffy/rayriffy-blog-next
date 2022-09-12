@@ -16,7 +16,7 @@ import { imageParser } from './src/modules/remark/imageParser.mjs'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blog.rayriffy.com',
-  adapter: process.env.NODE_ENV === 'production' ? vercel() : undefined,
+  adapter: ['true', '1'].includes(process.env.CI ?? '') ? vercel() : undefined,
   integrations: [
     mdx(),
     sitemap({

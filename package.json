@@ -12,24 +12,23 @@
     "data": "node -r @swc-node/register tools/markdownBuilder.ts"
   },
   "devDependencies": {
-    "@astrojs/markdown-remark": "^1.1.0",
-    "@astrojs/mdx": "^0.10.1",
+    "@astrojs/markdown-remark": "^1.1.1",
+    "@astrojs/mdx": "^0.11.1",
     "@astrojs/partytown": "^1.0.0",
     "@astrojs/prefetch": "^0.0.7",
-    "@astrojs/rss": "^1.0.0",
+    "@astrojs/rss": "^1.0.1",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
-    "@astrojs/vercel": "^1.0.1",
+    "@astrojs/vercel": "^2.0.0",
     "@swc-node/register": "^1.5.1",
-    "@tailwindcss/typography": "^0.5.4",
+    "@tailwindcss/typography": "^0.5.7",
     "@types/node-fetch": "^2.6.2",
-    "astro": "^1.0.9",
-    "astro-compress": "^1.0.5",
+    "astro": "^1.2.2",
+    "astro-compress": "^1.0.7",
     "dayjs": "^1.11.5",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.2",
     "node-fetch": "2.6.7",
     "prettier": "^2.7.1",
-    "unified": "9.2.2",
     "unist-util-select": "3.0.4"
   }
 }
