@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config'
 
 /* Astro plugins */
 import compress from 'astro-compress'
-import vercel from '@astrojs/vercel/edge'
+import vercel from '@astrojs/vercel/static'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
