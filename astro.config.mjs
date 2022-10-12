@@ -36,7 +36,7 @@ export default defineConfig({
     compress({
       img: false,
       svg: false,
-      js: false,
+      js: true,
     }),
     prefetch(),
   ],
