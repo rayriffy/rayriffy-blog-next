@@ -47,7 +47,7 @@ export const imageParser = () => {
 
     await Promise.all(
       nodes.map(async node => {
-        const baseHtml = `<img src="${encode(
+        const baseHtml = `<img class="mx-auto" src="${encode(
           getContentfulURL(node.url, 'jpg')
         )}" alt="${encode(node.alt)}" loading="lazy" />`
 

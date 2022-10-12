@@ -1,5 +1,5 @@
 ---
-import dayjs from 'dayjs'
+import { serializeDate } from '../../../core/services/serializeDate'
 
 export interface Props {
   title: string
@@ -14,7 +14,7 @@ const { title, author, date, categories } = Astro.props
 <div class="pt-2">
   <h1 class="text-4xl">{title}</h1>
   <span class="text-gray-600">
-    Written by {author} on {dayjs(date).format('DD MMM YYYY')}
+    Written by {author} on {serializeDate(date)}
   </span>
   <div class="flex flex-wrap space-x-2 pt-3 -mt-1">
     {
