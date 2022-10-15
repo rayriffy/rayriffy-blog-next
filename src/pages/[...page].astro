@@ -9,120 +9,126 @@ import Pagination from '../modules/listing/components/pagination.astro'
 import type { GetStaticPaths, Page } from 'astro'
 
 interface Frontmatter {
-	title: string
-	subtitle: string
-	date: string
-	author: string
-	categories: string[]
-	banner: [string, number, number, string] // [url, width, height, placeholder]
-	featured: boolean
-	draft: boolean
+  title: string
+  subtitle: string
+  date: string
+  author: string
+  categories: string[]
+  banner: [string, number, number, string] // [url, width, height, placeholder]
+  featured: boolean
+  draft: boolean
 }
 
 export interface Props {
-	page: Page<{
-		frontmatter: Frontmatter
-		file: string
-		url: string
-	}>
-	featuredBlogPost: {
-		frontmatter: Frontmatter
-		file: string
-		url: string
-	} | null
+  page: Page<{
+    frontmatter: Frontmatter
+    file: string
+    url: string
+  }>
+  featuredBlogPost: {
+    frontmatter: Frontmatter
+    file: string
+    url: string
+  } | null
 }
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
-	const blogPosts = await Astro.glob<Frontmatter>('./*.md')
-	const sortedBlogPosts = blogPosts.sort(
-		(a, b) =>
-			dayjs(b.frontmatter.date).unix() - dayjs(a.frontmatter.date).unix()
-	)
+  const blogPosts = await Astro.glob<Frontmatter>('./*.md')
+  const sortedBlogPosts = blogPosts.sort(
+    (a, b) =>
+      dayjs(b.frontmatter.date).unix() - dayjs(a.frontmatter.date).unix()
+  )
 
-	const pages = paginate(sortedBlogPosts, {
-		pageSize: 6,
-	})
+  const pages = paginate(sortedBlogPosts, {
+    pageSize: 6,
+  })
 
-	return pages.map((page, i) => ({
-		...page,
-		props: {
-			...page.props,
-			featuredBlogPost:
-				i !== 0
-					? null
-					: sortedBlogPosts.find(o => o.frontmatter.featured === true),
-		},
-		params: {
-			page: i === 0 ? undefined : `pages/${i + 1}`,
-		},
-	}))
+  return pages.map((page, i) => ({
+    ...page,
+    props: {
+      ...page.props,
+      featuredBlogPost:
+        i !== 0
+          ? null
+          : sortedBlogPosts.find(o => o.frontmatter.featured === true),
+    },
+    params: {
+      page: i === 0 ? undefined : `pages/${i + 1}`,
+    },
+  }))
 }
 
 const { page, featuredBlogPost } = Astro.props
 ---
 
 <AppLayout>
-	<div class="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
-		{
-			featuredBlogPost !== null && (
-				<div class="max-w-4xl mx-auto">
-					<a href={featuredBlogPost.url} rel="prefetch">
-						<div class="rounded-none sm:rounded-lg overflow-hidden relative">
-							<div class="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
-								<div class="space-y-0.5 md:space-y-2 text-white">
-									<span class="uppercase text-base md:text-lg">Featured</span>
-									<h1 class="text-xl md:text-4xl">
-										{featuredBlogPost.frontmatter.title}
-									</h1>
-									<p class="text-sm md:text-xl">
-										{featuredBlogPost.frontmatter.subtitle}
-									</p>
-								</div>
-							</div>
-							<div class="next-image-wrapper">
-								<Image
-									src={featuredBlogPost.frontmatter.banner[0]}
-									width={featuredBlogPost.frontmatter.banner[1]}
-									height={featuredBlogPost.frontmatter.banner[2]}
-									placeholder={featuredBlogPost.frontmatter.banner[3]}
-									alt={featuredBlogPost.frontmatter.title}
-								/>
-							</div>
-						</div>
-					</a>
-				</div>
-			)
-		}
-		<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
-			{
-				page.data.map(({ frontmatter, url }, i) => (
-					<a href={url} rel="prefetch">
-						<div class="rounded-none sm:rounded-lg overflow-hidden shadow-md bg-white relative">
-							{frontmatter.draft && (<span class="absolute text-white bg-black py-1.5 px-3 z-10 text-sm font-bold italic rounded-br-lg">DRAFT</span>)}
-							<Image
-								alt={frontmatter.title}
-								src={frontmatter.banner[0]}
-								width={frontmatter.banner[1]}
-								height={frontmatter.banner[2]}
-								placeholder={frontmatter.banner[3]}
-								loading={i === 0 ? null : 'lazy'}
-							/>
-							<div class="px-4 py-4 sm:px-6">
-								<h1 class="text-2xl text-gray-900">{frontmatter.title}</h1>
-								<p class="text-gray-600 pt-1">
-									Written by{' '}
-									<span class="text-gray-800">{frontmatter.author}</span> on{' '}
-									{serializeDate(frontmatter.date)}
-								</p>
-								<p class="text-gray-600 py-2">{frontmatter.subtitle}</p>
-							</div>
-						</div>
-					</a>
-				))
-			}
-		</div>
-		<div class="pt-6">
-			<Pagination current={page.currentPage} max={page.total} />
-		</div>
-	</div>
+  <div class="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
+    {
+      featuredBlogPost !== null && (
+        <div class="max-w-4xl mx-auto">
+          <a href={featuredBlogPost.url} rel="prefetch">
+            <div class="rounded-none sm:rounded-lg overflow-hidden relative">
+              <div class="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
+                <div class="space-y-0.5 md:space-y-2 text-white">
+                  <span class="uppercase text-base md:text-lg">Featured</span>
+                  <h1 class="text-xl md:text-4xl">
+                    {featuredBlogPost.frontmatter.title}
+                  </h1>
+                  <p class="text-sm md:text-xl">
+                    {featuredBlogPost.frontmatter.subtitle}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <Image
+                  src={featuredBlogPost.frontmatter.banner[0]}
+                  width={featuredBlogPost.frontmatter.banner[1]}
+                  height={featuredBlogPost.frontmatter.banner[2]}
+                  placeholder={featuredBlogPost.frontmatter.banner[3]}
+                  alt={featuredBlogPost.frontmatter.title}
+                  fetchPriority="high"
+                />
+              </div>
+            </div>
+          </a>
+        </div>
+      )
+    }
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+      {
+        page.data.map(({ frontmatter, url }, i) => (
+          <a href={url} rel="prefetch">
+            <div class="rounded-none sm:rounded-lg overflow-hidden shadow-md bg-white relative">
+              {frontmatter.draft && (
+                <span class="absolute text-white bg-black py-1.5 px-3 z-10 text-sm font-bold italic rounded-br-lg">
+                  DRAFT
+                </span>
+              )}
+              <Image
+                alt={frontmatter.title}
+                src={frontmatter.banner[0]}
+                width={frontmatter.banner[1]}
+                height={frontmatter.banner[2]}
+                placeholder={frontmatter.banner[3]}
+                loading={i === 0 ? null : 'lazy'}
+                fetchPriority="low"
+              />
+              <div class="px-4 py-4 sm:px-6">
+                <h1 class="text-2xl text-gray-900">{frontmatter.title}</h1>
+                <p class="text-gray-600 pt-1">
+                  Written by{' '}
+                  <span class="text-gray-800">{frontmatter.author}</span> on{' '}
+                  {serializeDate(frontmatter.date)}
+                </p>
+                <p class="text-gray-600 py-2">{frontmatter.subtitle}</p>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <div class="pt-6">
+      <Pagination current={page.currentPage} max={page.total} />
+    </div>
+  </div>
 </AppLayout>

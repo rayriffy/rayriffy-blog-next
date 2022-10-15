@@ -2,6 +2,7 @@
 export interface Props extends astroHTML.JSX.ImgHTMLAttributes {
   srcsetSize?: number[]
   placeholder?: string
+  fetchPriority?: 'high' | 'low' | 'auto'
 }
 
 type CDNImageType = 'jpg' | 'png' | 'webp' | 'avif'
@@ -32,7 +33,15 @@ const generateSourceSet = (url: string, type: CDNImageType) =>
 ---
 
 <div class="relative w-full aspect-[1500/788]">
-  {placeholder !== null && <img src={placeholder} class="w-full aspect-[1500/788] absolute" alt="blurhash" />}
+  {
+    placeholder !== null && (
+      <img
+        src={placeholder}
+        class="w-full aspect-[1500/788] absolute"
+        alt="blurhash"
+      />
+    )
+  }
   <picture>
     <source
       type="image/avif"
@@ -48,7 +57,9 @@ const generateSourceSet = (url: string, type: CDNImageType) =>
     />
     <source
       type="image/jpeg"
-      srcset={typeof src === 'string' ? generateSourceSet(src, 'jpg') : undefined}
+      srcset={typeof src === 'string'
+        ? generateSourceSet(src, 'jpg')
+        : undefined}
     />
     <img
       src={typeof src === 'string' ? getContentfulURL(src, 'jpg') : undefined}
