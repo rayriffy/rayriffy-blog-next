@@ -6,15 +6,16 @@ export interface Props {
   author: string
   date: string
   categories: string[]
+  minutesRead: string
 }
 
-const { title, author, date, categories } = Astro.props
+const { title, author, date, categories, minutesRead } = Astro.props
 ---
 
 <div class="pt-2">
   <h1 class="text-4xl">{title}</h1>
-  <span class="text-gray-600">
-    Written by {author} on {serializeDate(date)}
+  <span class="text-gray-500">
+    Written by <span class="font-medium text-gray-600">{author}</span> on <span class="font-medium text-gray-600">{serializeDate(date)}</span> · <span class="font-medium text-gray-600">{minutesRead}</span>
   </span>
   <div class="flex flex-wrap space-x-2 pt-3 -mt-1">
     {

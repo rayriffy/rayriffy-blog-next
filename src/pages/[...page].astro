@@ -17,6 +17,7 @@ interface Frontmatter {
   banner: [string, number, number, string] // [url, width, height, placeholder]
   featured: boolean
   draft: boolean
+  minutesRead: string
 }
 
 export interface Props {
@@ -98,7 +99,7 @@ const { page, featuredBlogPost } = Astro.props
       {
         page.data.map(({ frontmatter, url }, i) => (
           <a href={url} rel="prefetch">
-            <div class="rounded-none sm:rounded-lg overflow-hidden shadow-md bg-white relative">
+            <div class="rounded-none sm:rounded-lg overflow-hidden shadow-lg bg-white relative">
               {frontmatter.draft && (
                 <span class="absolute text-white bg-black py-1.5 px-3 z-10 text-sm font-bold italic rounded-br-lg">
                   DRAFT
@@ -117,8 +118,8 @@ const { page, featuredBlogPost } = Astro.props
                 <h1 class="text-2xl text-gray-900">{frontmatter.title}</h1>
                 <p class="text-gray-600 pt-1">
                   Written by{' '}
-                  <span class="text-gray-800">{frontmatter.author}</span> on{' '}
-                  {serializeDate(frontmatter.date)}
+                  <span class="font-medium text-gray-800">{frontmatter.author}</span> on{' '}
+                  <span class="font-medium text-gray-800">{serializeDate(frontmatter.date)}</span>
                 </p>
                 <p class="text-gray-600 py-2">{frontmatter.subtitle}</p>
               </div>
