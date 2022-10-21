@@ -18,7 +18,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Niramit', ...defaultTheme.fontFamily.sans],
-        header: ['Kanit', ...defaultTheme.fontFamily.sans],
+        header: ['LINE Seed', ...defaultTheme.fontFamily.sans],
       },
       backgroundColor: {
         'black-overlay': 'rgba(0, 0, 0, 0.25)',
