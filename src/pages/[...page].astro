@@ -68,7 +68,7 @@ const { page, featuredBlogPost } = Astro.props
       featuredBlogPost !== null && (
         <div class="max-w-4xl mx-auto">
           <a href={featuredBlogPost.url} rel="prefetch">
-            <div class="rounded-none sm:rounded-lg overflow-hidden relative">
+            <div class="rounded-none sm:rounded-2xl overflow-hidden relative">
               <div class="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
                 <div class="space-y-0.5 md:space-y-2 text-white">
                   <span class="uppercase text-base md:text-lg">Featured</span>
@@ -99,9 +99,9 @@ const { page, featuredBlogPost } = Astro.props
       {
         page.data.map(({ frontmatter, url }, i) => (
           <a href={url} rel="prefetch">
-            <div class="rounded-none sm:rounded-lg overflow-hidden shadow-lg bg-white relative">
+            <div class="rounded-none sm:rounded-2xl overflow-hidden shadow-lg bg-white relative">
               {frontmatter.draft && (
-                <span class="absolute text-white bg-black py-1.5 px-3 z-10 text-sm font-bold italic rounded-br-lg">
+                <span class="absolute text-white bg-black py-1.5 px-3 z-10 text-sm font-bold italic rounded-br-2xl">
                   DRAFT
                 </span>
               )}
