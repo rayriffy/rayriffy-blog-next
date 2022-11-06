@@ -2,7 +2,12 @@ import fetch from 'node-fetch'
 
 import type { Asset } from '../@types/Asset'
 
-export const getBlurImage = async (image: Asset) => {
+interface BlurhashResponse {
+  blurhashCode: string
+  encoded: string
+}
+
+export const getBlurImage = async (image: Asset): Promise<BlurhashResponse> => {
   const res = await fetch('https://api.rayriffy.com/api/blurhash', {
     method: 'POST',
     headers: {

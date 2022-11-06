@@ -5,7 +5,7 @@ interface Metadata {
     date: string
     author: string
     categories: string[]
-    banner: [string, number, number] // [url, width, height]
+    banner: [string, number, number, string, string] // [url, width, height, placeholder, blurhash]
     featured: boolean
   }
   url: string
@@ -33,6 +33,7 @@ export const get = async () => {
         url: item.frontmatter.banner[0],
         width: item.frontmatter.banner[1],
         height: item.frontmatter.banner[2],
+        hash: item.frontmatter.banner[4],
       },
       title: item.frontmatter.title,
       subtitle: item.frontmatter.subtitle,

@@ -39,7 +39,8 @@ const stringifyArray = (strings: (string | number)[]) => {
               blogPost.banner.url,
               blogPost.banner.width,
               blogPost.banner.height,
-              blogPost.banner.placeholder,
+              blogPost.banner.placeholder.encoded,
+              blogPost.banner.placeholder.blurhashCode,
             ]),
             featured: blogPost.featured ? 'true' : 'false',
             draft: blogPost.sys.publishedAt === null

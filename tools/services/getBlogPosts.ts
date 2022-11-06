@@ -58,7 +58,12 @@ export const getBlogPosts = async (options: Option = {}) => {
         ...blog,
         banner: {
           ...blog.banner,
-          placeholder: noBlur ? '' : await getBlurImage(blog.banner),
+          placeholder: noBlur
+            ? {
+                blurhashCode: '',
+                encoded: '',
+              }
+            : await getBlurImage(blog.banner),
         },
       }
     })
