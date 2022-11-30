@@ -12,7 +12,7 @@
         "id": "blogPost",
         "type": "ContentType",
         "createdAt": "2019-10-04T04:27:46.371Z",
-        "updatedAt": "2019-10-10T07:11:27.100Z",
+        "updatedAt": "2020-11-30T15:00:19.787Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -20,8 +20,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 25,
-        "publishedAt": "2019-10-10T07:11:27.100Z",
+        "publishedVersion": 27,
+        "publishedAt": "2020-11-30T15:00:19.787Z",
         "firstPublishedAt": "2019-10-04T04:27:47.780Z",
         "createdBy": {
           "sys": {
@@ -37,8 +37,8 @@
             "id": "6c3JqRMjO5p7Zoib9N2fmI"
           }
         },
-        "publishedCounter": 13,
-        "version": 26,
+        "publishedCounter": 14,
+        "version": 28,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -73,7 +73,9 @@
           "required": true,
           "validations": [
             {
-              "linkMimetypeGroup": ["image"]
+              "linkMimetypeGroup": [
+                "image"
+              ]
             },
             {
               "assetImageDimensions": {
@@ -98,7 +100,8 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false
         },
@@ -108,7 +111,8 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false
         },
@@ -118,7 +122,8 @@
           "type": "Date",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false
         },
@@ -128,7 +133,8 @@
           "type": "Boolean",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false
         },
@@ -140,7 +146,9 @@
           "required": true,
           "validations": [
             {
-              "linkContentType": ["author"]
+              "linkContentType": [
+                "author"
+              ]
             }
           ],
           "disabled": false,
@@ -153,14 +161,17 @@
           "type": "Array",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false,
           "items": {
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["category"]
+                "linkContentType": [
+                  "category"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -172,7 +183,8 @@
           "type": "Text",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false
         }
@@ -251,7 +263,9 @@
           "required": true,
           "validations": [
             {
-              "linkMimetypeGroup": ["image"]
+              "linkMimetypeGroup": [
+                "image"
+              ]
             },
             {
               "assetImageDimensions": {
@@ -276,7 +290,8 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false
         },
@@ -304,7 +319,8 @@
           "type": "Symbol",
           "localized": false,
           "required": false,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false
         }
@@ -381,7 +397,8 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false
         },
@@ -391,11 +408,406 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+          ],
           "disabled": false,
           "omitted": false
         }
       ]
+    }
+  ],
+  "tags": [
+  ],
+  "editorInterfaces": [
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "f7xg7kmhsht8",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 31,
+        "createdAt": "2019-10-04T04:27:47.928Z",
+        "createdBy": {
+          "sys": {
+            "id": "6c3JqRMjO5p7Zoib9N2fmI",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2020-11-30T15:00:20.942Z",
+        "updatedBy": {
+          "sys": {
+            "id": "6c3JqRMjO5p7Zoib9N2fmI",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "blogPost",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "sidebar": [
+        {
+          "settings": {
+          },
+          "widgetId": "content-preview-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "publication-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "incoming-links-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "versions-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "users-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "disabled": true,
+          "widgetId": "translation-widget",
+          "widgetNamespace": "sidebar-builtin"
+        }
+      ],
+      "controls": [
+        {
+          "fieldId": "slug",
+          "widgetId": "slugEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "banner",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "subtitle",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "date",
+          "settings": {
+            "ampm": "24",
+            "format": "timeZ"
+          },
+          "widgetId": "datePicker",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "featured",
+          "settings": {
+            "trueLabel": "Yes",
+            "falseLabel": "No"
+          },
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "author",
+          "widgetId": "entryCardEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "category",
+          "settings": {
+            "bulkEditing": false
+          },
+          "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "content",
+          "widgetId": "markdown",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "f7xg7kmhsht8",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 16,
+        "createdAt": "2019-10-04T04:32:21.363Z",
+        "createdBy": {
+          "sys": {
+            "id": "6c3JqRMjO5p7Zoib9N2fmI",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2020-11-30T14:54:01.793Z",
+        "updatedBy": {
+          "sys": {
+            "id": "6c3JqRMjO5p7Zoib9N2fmI",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "author",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "sidebar": [
+        {
+          "settings": {
+          },
+          "widgetId": "publication-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "incoming-links-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "versions-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "users-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "disabled": true,
+          "widgetId": "content-preview-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "disabled": true,
+          "widgetId": "translation-widget",
+          "widgetNamespace": "sidebar-builtin"
+        }
+      ],
+      "controls": [
+        {
+          "fieldId": "user",
+          "widgetId": "slugEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "banner",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "name",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "twitter",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "facebook",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    },
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "f7xg7kmhsht8",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 11,
+        "createdAt": "2019-10-04T05:14:11.464Z",
+        "createdBy": {
+          "sys": {
+            "id": "6c3JqRMjO5p7Zoib9N2fmI",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2020-11-30T14:54:02.057Z",
+        "updatedBy": {
+          "sys": {
+            "id": "6c3JqRMjO5p7Zoib9N2fmI",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "category",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "sidebar": [
+        {
+          "settings": {
+          },
+          "widgetId": "publication-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "incoming-links-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "versions-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "users-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "disabled": true,
+          "widgetId": "content-preview-widget",
+          "widgetNamespace": "sidebar-builtin"
+        },
+        {
+          "disabled": true,
+          "widgetId": "translation-widget",
+          "widgetNamespace": "sidebar-builtin"
+        }
+      ],
+      "controls": [
+        {
+          "fieldId": "key",
+          "widgetId": "slugEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "name",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "desc",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    }
+  ],
+  "locales": [
+    {
+      "name": "English (United States)",
+      "code": "en-US",
+      "fallbackCode": null,
+      "default": true,
+      "contentManagementApi": true,
+      "contentDeliveryApi": true,
+      "optional": false,
+      "sys": {
+        "type": "Locale",
+        "id": "7DmYxevQg9V2Hw7t6eFtfL",
+        "version": 1,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "f7xg7kmhsht8"
+          }
+        },
+        "environment": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Environment",
+            "id": "master",
+            "uuid": "653e5d31-e741-42c8-a7e0-08792ee1816f"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "6c3JqRMjO5p7Zoib9N2fmI"
+          }
+        },
+        "createdAt": "2019-10-04T04:25:54Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "6c3JqRMjO5p7Zoib9N2fmI"
+          }
+        },
+        "updatedAt": "2019-10-04T04:25:54Z"
+      }
     }
   ]
 }
