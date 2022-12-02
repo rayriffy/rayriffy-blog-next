@@ -27,6 +27,7 @@
     "@types/sharp": "^0.31.0",
     "astro": "^1.6.11",
     "astro-compress": "^1.1.12",
+    "blurhash": "^2.0.4",
     "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",
     "node-fetch": "2.6.7",

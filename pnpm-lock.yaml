@@ -16,6 +16,7 @@ specifiers:
   '@types/sharp': ^0.31.0
   astro: ^1.6.11
   astro-compress: ^1.1.12
+  blurhash: ^2.0.4
   dayjs: ^1.11.6
   dotenv: ^16.0.3
   node-fetch: 2.6.7
@@ -41,6 +42,7 @@ devDependencies:
   '@types/sharp': 0.31.0
   astro: 1.6.11
   astro-compress: 1.1.12
+  blurhash: 2.0.4
   dayjs: 1.11.6
   dotenv: 16.0.3
   node-fetch: 2.6.7
@@ -1304,6 +1306,10 @@ packages:
       buffer: 6.0.3
       inherits: 2.0.4
       readable-stream: 3.6.0
+    dev: true
+
+  /blurhash/2.0.4:
+    resolution: {integrity: sha512-r/As72u2FbucLoK5NTegM/GucxJc3d8GvHc4ngo13IO/nt2HU4gONxNLq1XPN6EM/V8Y9URIa7PcSz2RZu553A==}
     dev: true
 
   /boolbase/1.0.0:
