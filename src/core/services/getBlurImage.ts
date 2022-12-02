@@ -1,6 +1,6 @@
 import { decode, encode } from 'blurhash'
 import fetch from 'node-fetch'
-import sharp from 'sharp'
+import * as sharp from 'sharp'
 
 import type { Asset } from '../@types/Asset'
 
@@ -62,6 +62,7 @@ export const getBlurImage = async (image: Asset): Promise<BlurhashResponse> => {
         encoded: `data:image/jpeg;base64,${resizedImageBuf.toString('base64')}`,
       }
     } catch (e) {
+      console.log(e)
       throw 'blurhash-fail'
     }
   } else {
