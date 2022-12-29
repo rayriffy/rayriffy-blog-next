@@ -10,6 +10,7 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            lineHeight: '2',
             h2: {
               marginTop: '0',
             },
