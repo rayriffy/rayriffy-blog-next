@@ -10,7 +10,7 @@ import { getBlogPosts } from './services/getBlogPosts'
 config()
 const {} = process.env
 
-const rootMarkdownDirectory = path.join(__dirname, '../src/pages')
+const rootMarkdownDirectory = path.join(process.cwd(), 'src/pages')
 const stringifyArray = (strings: (string | number)[]) => {
   return `[${strings
     .map(o => (typeof o === 'string' ? `"${o.replace(/\"/g, '\\"')}"` : o))

@@ -1,5 +1,3 @@
-import fetch from 'node-fetch'
-
 import { blogPostField } from '../../src/core/constants/blogPostField'
 import { getBlurImage } from '../../src/core/services/getBlurImage'
 

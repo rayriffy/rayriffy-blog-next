@@ -1,5 +1,4 @@
 import { decode, encode } from 'blurhash'
-import fetch from 'node-fetch'
 import * as sharp from 'sharp'
 
 import type { Asset } from '../@types/Asset'
