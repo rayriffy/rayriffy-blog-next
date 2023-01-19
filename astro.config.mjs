@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config'
 
 /* Astro plugins */
 import compress from 'astro-compress'
-import vercel from '@astrojs/vercel/static'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
@@ -17,7 +16,6 @@ import { readingTime } from './src/modules/remark/readingTime.mjs'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blog.rayriffy.com',
-  adapter: ['true', '1'].includes(process.env.CI ?? '') ? vercel() : undefined,
   integrations: [
     mdx(),
     sitemap({

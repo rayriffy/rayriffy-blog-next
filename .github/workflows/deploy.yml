@@ -1,0 +1,53 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: 'Intitialize: Checkout repository'
+        uses: actions/checkout@v3
+      - name: 'Intitialize: Summon NodeJS'
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: 'Intitialize: Configure pnpm'
+        uses: pnpm/action-setup@v2.2.4
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: 'Cache: node_modules'
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.local/share/pnpm/store/v3
+          key: ${{ runner.OS }}-x86-node18-pnpm7-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.OS }}-x86-node18-pnpm7-${{ env.cache-name }}-
+            ${{ runner.OS }}-x86-node18-pnpm7-
+      - name: 'Intitialize: Install dependencies'
+        run: pnpm -r i --shamefully-hoist --prefer-offline
+      - name: 'Execute: Build'
+        env:
+          BLURHASH_TOKEN: ${{ secrets.BLURHASH_TOKEN }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+        run: pnpm build
+      - name: 'Deployment: Upload artifacts'
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: dist
+      - name: 'Deployment: Deploy to target'
+        id: deployment
+        uses: actions/deploy-pages@v1
+      - name: 'Post-deplotyment: Logging'
+        run: echo "Deployed at ${{ steps.deployment.outputs.page_url }}"
