@@ -9,6 +9,7 @@ interface Metadata {
     categories: string[]
     banner: [string, number, number] // [url, width, height]
     featured: boolean
+    draft: boolean
   }
   url: string
 }
@@ -32,9 +33,10 @@ export const get = async () => {
 
       return {
         title: frontmatter.title,
-        description: frontmatter.subtitle,
+        description: frontmatter.subtitle ?? '',
         link: url,
         pubDate: new Date(frontmatter.date),
+        draft: frontmatter.draft,
       }
     })
 

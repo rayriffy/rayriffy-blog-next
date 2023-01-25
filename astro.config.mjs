@@ -15,7 +15,7 @@ import { readingTime } from './src/modules/remark/readingTime.mjs'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blog.rayriffy.com',
+  site: 'https://blog.rayriffy.com/',
   integrations: [
     mdx(),
     sitemap({
@@ -42,6 +42,5 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [iframeParser, imageParser, readingTime],
     rehypePlugins: [],
-    extendDefaultPlugins: true,
   },
 })
