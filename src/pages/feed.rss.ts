@@ -1,42 +1,24 @@
 import rss from '@astrojs/rss'
-
-interface Metadata {
-  frontmatter: {
-    title: string
-    subtitle: string
-    date: string
-    author: string
-    categories: string[]
-    banner: [string, number, number] // [url, width, height]
-    featured: boolean
-    draft: boolean
-  }
-  url: string
-}
+import { getCollection } from 'astro:content'
 
 export const get = async () => {
-  const items = await import.meta.glob('./*.md')
+  const blogs = await getCollection('blog')
 
-  const readItems = await Promise.all(
-    Object.entries(items).map(
-      async ([_, caller]) => (await caller()) as Metadata
-    )
-  )
-  const rssItems = readItems
+  const rssItems = blogs
     .sort(
       (a, b) =>
-        new Date(b.frontmatter.date).getTime() -
-        new Date(a.frontmatter.date).getTime()
+        new Date(b.data.date).getTime() -
+        new Date(a.data.date).getTime()
     )
     .map(item => {
-      const { frontmatter, url } = item
+      const { data, slug } = item
 
       return {
-        title: frontmatter.title,
-        description: frontmatter.subtitle ?? '',
-        link: url,
-        pubDate: new Date(frontmatter.date),
-        draft: frontmatter.draft,
+        title: data.title,
+        description: data.subtitle ?? '',
+        link: `/${slug}`,
+        pubDate: new Date(data.date),
+        draft: data.draft,
       }
     })
 

@@ -22,3 +22,5 @@ pnpm-debug.log*
 *.mdx
 .vercel
 .cache
+
+.astro

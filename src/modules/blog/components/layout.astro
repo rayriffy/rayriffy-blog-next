@@ -1,42 +1,33 @@
 ---
 import Adsense from './adsense.astro'
 import Heading from './heading.astro'
-import AppLayout from '../../../app/components/layout.astro'
-import Image from '../../../core/components/image.astro'
+import AppLayout from '$app/components/layout.astro'
+import Image from '$core/components/image.astro'
+
+import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
-  frontmatter: {
-    title: string
-    subtitle: string
-    date: string
-    author: string
-    categories: string[]
-    banner: [string, number, number, string] // [url, width, height, placeholder]
-
-    file: string
-    url: string
-
-    minutesRead: string
-  }
+  blog: CollectionEntry<'blog'>
+  minutesRead: string
 }
 
-const { banner, title, subtitle } = Astro.props.frontmatter
+const { banner, title, subtitle } = Astro.props.blog.data
 ---
 
-<AppLayout title={title} description={subtitle} image={banner[0]}>
+<AppLayout title={title} description={subtitle} image={banner.url}>
   <div class="space-y-6">
     <div class="max-w-4xl mx-auto">
       <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
         <Image
-          src={banner[0]}
-          width={banner[1]}
-          height={banner[2]}
-          placeholder={banner[3]}
+          src={banner.url}
+          width={banner.width}
+          height={banner.height}
+          placeholder={banner.placeholder}
           alt="cover"
           fetchPriority="high"
         />
         <div class="py-8 px-4 sm:px-6 lg:px-8">
-          <Heading {...Astro.props.frontmatter} />
+          <Heading {...Astro.props} />
 
           <section class="flex justify-center py-4">
             <div>

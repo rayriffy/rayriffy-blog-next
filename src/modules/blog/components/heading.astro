@@ -1,21 +1,20 @@
 ---
-import { serializeDate } from '../../../core/services/serializeDate'
+import { serializeDate } from '$core/services/serializeDate'
+
+import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
-  title: string
-  author: string
-  date: string
-  categories: string[]
+  blog: CollectionEntry<'blog'>
   minutesRead: string
 }
 
-const { title, author, date, categories, minutesRead } = Astro.props
+const { title, author, date, categories } = Astro.props.blog.data
 ---
 
 <div class="pt-0">
   <h1 class="text-2xl sm:text-4xl text-gray-900">{title}</h1>
   <p class="text-gray-500 mt-2">
-    Written by <span class="font-medium text-gray-600">{author}</span> on <span class="font-medium text-gray-600">{serializeDate(date)}</span> · <span class="font-medium text-gray-600">{minutesRead}</span>
+    Written by <span class="font-medium text-gray-600">{author}</span> on <span class="font-medium text-gray-600">{serializeDate(date)}</span> · <span class="font-medium text-gray-600">{Astro.props.minutesRead}</span>
   </p>
   <div class="flex flex-wrap space-x-2 pt-3 -mt-1">
     {

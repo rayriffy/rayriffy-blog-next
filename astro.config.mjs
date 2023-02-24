@@ -41,6 +41,5 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [iframeParser, imageParser, readingTime],
-    rehypePlugins: [],
   },
 })

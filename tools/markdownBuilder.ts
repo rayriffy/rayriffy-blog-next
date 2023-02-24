@@ -10,7 +10,7 @@ import { getBlogPosts } from './services/getBlogPosts'
 config()
 const {} = process.env
 
-const rootMarkdownDirectory = path.join(process.cwd(), 'src/pages')
+const rootMarkdownDirectory = path.join(process.cwd(), 'src/content/blog')
 const stringifyArray = (strings: (string | number)[]) => {
   return `[${strings
     .map(o => (typeof o === 'string' ? `"${o.replace(/\"/g, '\\"')}"` : o))
@@ -27,21 +27,20 @@ const stringifyArray = (strings: (string | number)[]) => {
       await Promise.all(
         blogPosts.map(blogPost => {
           const header = {
-            layout: '../modules/blog/components/layout.astro',
             title: `"${blogPost.title.replace(/\"/g, '\\"')}"`,
-            subtitle: blogPost.subtitle,
+            subtitle: `"${blogPost.subtitle}"`,
             date: blogPost.date,
             author: blogPost.author.name,
             categories: stringifyArray(
               blogPost.categoryCollection.items.map(o => o.name)
             ),
-            banner: stringifyArray([
-              blogPost.banner.url,
-              blogPost.banner.width,
-              blogPost.banner.height,
-              blogPost.banner.placeholder.encoded,
-              blogPost.banner.placeholder.blurhashCode,
-            ]),
+            banner: `\n${[
+              ['url', blogPost.banner.url],
+              ['width', blogPost.banner.width],
+              ['height', blogPost.banner.height],
+              ['placeholder', blogPost.banner.placeholder.encoded],
+              ['blurhash', blogPost.banner.placeholder.blurhashCode]
+            ].map(([key, val]) => `  ${key}: ${val}`).join('\n')}`,
             featured: blogPost.featured ? 'true' : 'false',
             draft: blogPost.sys.publishedAt === null
           }

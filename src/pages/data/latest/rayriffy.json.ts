@@ -1,45 +1,29 @@
-interface Metadata {
-  frontmatter: {
-    title: string
-    subtitle: string
-    date: string
-    author: string
-    categories: string[]
-    banner: [string, number, number, string, string] // [url, width, height, placeholder, blurhash]
-    featured: boolean
-  }
-  url: string
-}
+import { getCollection } from "astro:content"
 
 export const get = async () => {
-  const items = await import.meta.glob('../../*.md')
+  const blogs = await getCollection('blog')
 
-  const readItems = await Promise.all(
-    Object.entries(items).map(
-      async ([_, caller]) => (await caller()) as Metadata
-    )
-  )
-  const processedItems = readItems
+  const processedItems = blogs
     .sort(
       (a, b) =>
-        new Date(b.frontmatter.date).getTime() -
-        new Date(a.frontmatter.date).getTime()
+        new Date(b.data.date).getTime() -
+        new Date(a.data.date).getTime()
     )
-    .filter(o => o.frontmatter.author === 'Phumrapee Limpianchop')
+    .filter(o => o.data.author === 'Phumrapee Limpianchop')
     .slice(0, 12)
     .map(item => ({
-      url: item.url,
+      url: `/${item.slug}`,
       banner: {
-        url: item.frontmatter.banner[0],
-        width: item.frontmatter.banner[1],
-        height: item.frontmatter.banner[2],
-        hash: item.frontmatter.banner[4],
+        url: item.data.banner.url,
+        width: item.data.banner.width,
+        height: item.data.banner.height,
+        hash: item.data.banner.blurhash,
       },
-      title: item.frontmatter.title,
-      subtitle: item.frontmatter.subtitle,
-      date: item.frontmatter.date,
-      featured: item.frontmatter.featured,
-      categories: item.frontmatter.categories,
+      title: item.data.title,
+      subtitle: item.data.subtitle,
+      date: item.data.date,
+      featured: item.data.featured,
+      categories: item.data.categories,
     }))
 
   return {
