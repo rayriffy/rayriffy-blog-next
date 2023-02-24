@@ -22,7 +22,7 @@ const stringifyArray = (strings: (string | number)[]) => {
   switch (command) {
     case 'build':
       const blogPosts = await getBlogPosts({
-        preview: !['true', '1'].includes(process.env.CI ?? '')
+        preview: !['true', '1'].includes(process.env.CI ?? ''),
       })
       await Promise.all(
         blogPosts.map(blogPost => {
@@ -39,10 +39,12 @@ const stringifyArray = (strings: (string | number)[]) => {
               ['width', blogPost.banner.width],
               ['height', blogPost.banner.height],
               ['placeholder', blogPost.banner.placeholder.encoded],
-              ['blurhash', blogPost.banner.placeholder.blurhashCode]
-            ].map(([key, val]) => `  ${key}: ${val}`).join('\n')}`,
+              ['blurhash', blogPost.banner.placeholder.blurhashCode],
+            ]
+              .map(([key, val]) => `  ${key}: ${val}`)
+              .join('\n')}`,
             featured: blogPost.featured ? 'true' : 'false',
-            draft: blogPost.sys.publishedAt === null
+            draft: blogPost.sys.publishedAt === null,
           }
 
           const builtContent = `---\n${Object.entries(header)

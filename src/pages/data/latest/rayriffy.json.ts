@@ -1,4 +1,4 @@
-import { getCollection } from "astro:content"
+import { getCollection } from 'astro:content'
 
 export const get = async () => {
   const blogs = await getCollection('blog')
@@ -6,8 +6,7 @@ export const get = async () => {
   const processedItems = blogs
     .sort(
       (a, b) =>
-        new Date(b.data.date).getTime() -
-        new Date(a.data.date).getTime()
+        new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
     )
     .filter(o => o.data.author === 'Phumrapee Limpianchop')
     .slice(0, 12)

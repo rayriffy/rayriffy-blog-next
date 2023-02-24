@@ -7,8 +7,7 @@ export const get = async () => {
   const rssItems = blogs
     .sort(
       (a, b) =>
-        new Date(b.data.date).getTime() -
-        new Date(a.data.date).getTime()
+        new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
     )
     .map(item => {
       const { data, slug } = item

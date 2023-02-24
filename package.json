@@ -11,6 +11,7 @@
     "astro": "astro",
     "clean": "pnpm data clean",
     "data": "pnpm --silent tem tools/markdownBuilder.ts",
+    "format": "prettier --write --plugin-search-dir=. .",
     "tem": "node --experimental-specifier-resolution=node --loader ts-node/esm"
   },
   "devDependencies": {

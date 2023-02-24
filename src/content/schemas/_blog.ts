@@ -11,8 +11,8 @@ export const blogSchema = z.object({
     width: z.number(),
     height: z.number(),
     placeholder: z.string(),
-    blurhash: z.string()
+    blurhash: z.string(),
   }),
   featured: z.boolean(),
-  draft: z.boolean()
+  draft: z.boolean(),
 })

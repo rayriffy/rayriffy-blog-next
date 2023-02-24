@@ -4,8 +4,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(/font/LINESeedSans.woff2)
-    format('woff2');
+  src: url(/font/LINESeedSans.woff2) format('woff2');
 }
 /* thai */
 @font-face {

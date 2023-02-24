@@ -73,9 +73,7 @@
           "required": true,
           "validations": [
             {
-              "linkMimetypeGroup": [
-                "image"
-              ]
+              "linkMimetypeGroup": ["image"]
             },
             {
               "assetImageDimensions": {
@@ -100,8 +98,7 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -111,8 +108,7 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -122,8 +118,7 @@
           "type": "Date",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -133,8 +128,7 @@
           "type": "Boolean",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -146,9 +140,7 @@
           "required": true,
           "validations": [
             {
-              "linkContentType": [
-                "author"
-              ]
+              "linkContentType": ["author"]
             }
           ],
           "disabled": false,
@@ -161,17 +153,14 @@
           "type": "Array",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false,
           "items": {
             "type": "Link",
             "validations": [
               {
-                "linkContentType": [
-                  "category"
-                ]
+                "linkContentType": ["category"]
               }
             ],
             "linkType": "Entry"
@@ -183,8 +172,7 @@
           "type": "Text",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         }
@@ -263,9 +251,7 @@
           "required": true,
           "validations": [
             {
-              "linkMimetypeGroup": [
-                "image"
-              ]
+              "linkMimetypeGroup": ["image"]
             },
             {
               "assetImageDimensions": {
@@ -290,8 +276,7 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -319,8 +304,7 @@
           "type": "Symbol",
           "localized": false,
           "required": false,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         }
@@ -397,8 +381,7 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -408,16 +391,14 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         }
       ]
     }
   ],
-  "tags": [
-  ],
+  "tags": [],
   "editorInterfaces": [
     {
       "sys": {
@@ -464,32 +445,27 @@
       },
       "sidebar": [
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "content-preview-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "publication-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "incoming-links-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "versions-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "users-widget",
           "widgetNamespace": "sidebar-builtin"
         },
@@ -603,26 +579,22 @@
       },
       "sidebar": [
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "publication-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "incoming-links-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "versions-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "users-widget",
           "widgetNamespace": "sidebar-builtin"
         },
@@ -710,26 +682,22 @@
       },
       "sidebar": [
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "publication-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "incoming-links-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "versions-widget",
           "widgetNamespace": "sidebar-builtin"
         },
         {
-          "settings": {
-          },
+          "settings": {},
           "widgetId": "users-widget",
           "widgetNamespace": "sidebar-builtin"
         },
