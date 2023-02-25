@@ -1,13 +1,14 @@
 ---
 import dayjs from 'dayjs'
-import { serializeDate } from '../core/services/serializeDate'
 
-import AppLayout from '../app/components/layout.astro'
-import Image from '../core/components/image.astro'
-import Pagination from '../modules/listing/components/pagination.astro'
+import AppLayout from '$app/components/layout.astro'
+import Image from '$core/components/image.astro'
+import { getCollectionBlog } from '$core/services/getCollectionBlog'
+import { serializeDate } from '$core/services/serializeDate'
+import Pagination from '$modules/listing/components/pagination.astro'
 
 import type { GetStaticPaths, Page } from 'astro'
-import { CollectionEntry, getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
   page: Page<CollectionEntry<'blog'>>
@@ -15,12 +16,9 @@ export interface Props {
 }
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
-  const blogPosts = await getCollection('blog')
-  const sortedBlogPosts = blogPosts.sort(
-    (a, b) => dayjs(b.data.date).unix() - dayjs(a.data.date).unix()
-  )
+  const blogPosts = await getCollectionBlog()
 
-  const pages = paginate(sortedBlogPosts, {
+  const pages = paginate(blogPosts, {
     pageSize: 6,
   })
 
@@ -31,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
       featuredBlogPost:
         i !== 0
           ? null
-          : sortedBlogPosts.find(o => o.data.featured === true) ?? null,
+          : blogPosts.find(o => o.data.featured === true) ?? null,
     },
     params: {
       page: i === 0 ? undefined : `pages/${i + 1}`,

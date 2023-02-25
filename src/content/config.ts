@@ -6,4 +6,7 @@ export const collections = {
   blog: defineCollection({
     schema: blogSchema,
   }),
+  local: defineCollection({
+    schema: blogSchema,
+  }),
 }

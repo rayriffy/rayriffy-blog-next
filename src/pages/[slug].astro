@@ -1,15 +1,16 @@
 ---
+import { getCollectionBlog } from '$core/services/getCollectionBlog'
 import BaseLayout from '$modules/blog/components/layout.astro'
 
 import type { GetStaticPaths } from 'astro'
-import { CollectionEntry, getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 
 export interface Props {
   blog: CollectionEntry<'blog'>
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blogs = await getCollection('blog')
+  const blogs = await getCollectionBlog()
 
   return blogs.map(blog => {
     return {
