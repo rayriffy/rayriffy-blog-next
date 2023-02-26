@@ -24,6 +24,8 @@ const stringifyArray = (strings: (string | number)[]) => {
       const blogPosts = await getBlogPosts({
         preview: !['true', '1'].includes(process.env.CI ?? ''),
       })
+
+      console.log('writing...')
       await Promise.all(
         blogPosts.map(blogPost => {
           const header = {

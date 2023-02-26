@@ -1,12 +1,28 @@
+import PQueue from 'p-queue'
+
 import { blogPostField } from '../../src/core/constants/blogPostField'
 import { getBlurImage } from '../../src/core/services/getBlurImage'
 
 import type { BlogPost } from '../../src/core/@types/BlogPost'
 
+const queue = new PQueue({ concurrency: 10 })
+
 interface RawQueryResult {
   data: {
     blogPostCollection: {
       items: BlogPost[]
+    }
+  }
+}
+
+interface ProcessedBlog extends Omit<BlogPost, 'banner'> {
+  banner: {
+    url: string
+    width: number
+    height: number
+    placeholder: {
+      blurhashCode: string
+      encoded: string
     }
   }
 }
@@ -31,6 +47,7 @@ export const getBlogPosts = async (options: Option = {}) => {
     }
   `
 
+  console.log('fetching blogs from cms...')
   const queryResult = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
@@ -50,21 +67,26 @@ export const getBlogPosts = async (options: Option = {}) => {
     }
   ).then(o => o.json() as Promise<RawQueryResult>)
 
-  const res = await Promise.all(
-    queryResult.data.blogPostCollection.items.map(async blog => {
-      return {
-        ...blog,
-        banner: {
-          ...blog.banner,
-          placeholder: noBlur
-            ? {
-                blurhashCode: '',
-                encoded: '',
-              }
-            : await getBlurImage(blog.banner),
-        },
-      }
-    })
+  console.log('post-processing...')
+  const res: ProcessedBlog[] = []
+
+  await Promise.all(
+    queryResult.data.blogPostCollection.items.map(blog =>
+      queue.add(async () => {
+        res.push({
+          ...blog,
+          banner: {
+            ...blog.banner,
+            placeholder: noBlur
+              ? {
+                  blurhashCode: '',
+                  encoded: '',
+                }
+              : await getBlurImage(blog.banner),
+          },
+        })
+      })
+    )
   )
 
   return res
