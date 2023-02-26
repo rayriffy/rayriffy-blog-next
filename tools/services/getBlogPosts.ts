@@ -5,7 +5,7 @@ import { getBlurImage } from '../../src/core/services/getBlurImage'
 
 import type { BlogPost } from '../../src/core/@types/BlogPost'
 
-const queue = new PQueue({ concurrency: 10 })
+const queue = new PQueue({ concurrency: 6 })
 
 interface RawQueryResult {
   data: {
@@ -71,7 +71,7 @@ export const getBlogPosts = async (options: Option = {}) => {
   const res: ProcessedBlog[] = []
 
   const intervalId = setInterval(() => {
-    console.log('in queue:', queue.pending)
+    console.log('fulfilled:', res.length)
   }, 1200)
 
   await Promise.all(
