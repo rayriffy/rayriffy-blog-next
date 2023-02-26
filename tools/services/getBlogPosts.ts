@@ -70,6 +70,10 @@ export const getBlogPosts = async (options: Option = {}) => {
   console.log('post-processing...')
   const res: ProcessedBlog[] = []
 
+  const intervalId = setInterval(() => {
+    console.log('in queue:', queue.pending)
+  }, 1200)
+
   await Promise.all(
     queryResult.data.blogPostCollection.items.map(blog =>
       queue.add(async () => {
@@ -88,6 +92,8 @@ export const getBlogPosts = async (options: Option = {}) => {
       })
     )
   )
+
+  clearInterval(intervalId)
 
   return res
 }
