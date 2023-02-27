@@ -1,13 +1,9 @@
-import PQueue from 'p-queue'
-import { setGlobalDispatcher, Agent } from 'undici'
+import axios from 'axios'
 
 import { blogPostField } from '../../src/core/constants/blogPostField'
 import { getBlurImage } from '../../src/core/services/getBlurImage'
 
 import type { BlogPost } from '../../src/core/@types/BlogPost'
-
-const queue = new PQueue({ concurrency: 10 })
-setGlobalDispatcher(new Agent({ connect: { timeout: 60000 } }))
 
 interface RawQueryResult {
   data: {
@@ -34,7 +30,9 @@ interface Option {
   noBlur?: boolean
 }
 
-export const getBlogPosts = async (options: Option = {}) => {
+export const getBlogPosts = async (
+  options: Option = {}
+): Promise<ProcessedBlog[]> => {
   const { preview = false } = options
 
   const query = `
@@ -50,47 +48,28 @@ export const getBlogPosts = async (options: Option = {}) => {
   `
 
   console.log('fetching blogs from cms...')
-  const queryResult = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accepts: 'application/json',
-        Authorization: `Bearer ${
-          preview
-            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-            : process.env.CONTENTFUL_ACCESS_TOKEN
-        }`,
-      },
-      body: JSON.stringify({
-        query,
-      }),
+  const { data: queryResult } = await axios.post<RawQueryResult>(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`, {
+    query,
+  }, {
+    headers: {
+      Authorization: `Bearer ${
+        preview
+          ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+          : process.env.CONTENTFUL_ACCESS_TOKEN}`
     }
-  ).then(o => o.json() as Promise<RawQueryResult>)
+  })
 
   console.log('post-processing...')
-  const res: ProcessedBlog[] = []
 
-  const intervalId = setInterval(() => {
-    console.log('fulfilled:', res.length)
-  }, 1000)
-
-  await Promise.all(
-    queryResult.data.blogPostCollection.items.map(blog =>
-      queue.add(async () => {
-        res.push({
-          ...blog,
-          banner: {
-            ...blog.banner,
-            placeholder: await getBlurImage(blog.banner),
-          },
-        })
-      })
-    )
+  const res = await Promise.all(
+    queryResult.data.blogPostCollection.items.map(async blog => ({
+      ...blog,
+      banner: {
+        ...blog.banner,
+        placeholder: await getBlurImage(blog.banner),
+      },
+    }))
   )
-
-  clearInterval(intervalId)
 
   return res
 }

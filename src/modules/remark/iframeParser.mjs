@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
+import axios from 'axios'
 import { selectAll } from 'unist-util-select'
 import { stringify } from 'querystring'
 
@@ -37,9 +38,7 @@ export const iframeParser = () => {
         fs.mkdirSync(path.dirname(providerCache), {
           recursive: true,
         })
-      const providersRemote = await fetch(
-        'https://oembed.com/providers.json'
-      ).then(o => o.json())
+      const { data: providersRemote } = await axios.get('https://oembed.com/providers.json')
       fs.writeFileSync(providerCache, JSON.stringify(providersRemote))
     }
 
@@ -76,12 +75,12 @@ export const iframeParser = () => {
               if (endpoint !== undefined) {
                 try {
                   // call api
-                  const oembedResult = await fetch(
-                    `${endpoint}?${stringify({
+                  const { data: oembedResult } = await axios.get(endpoint, {
+                    params: {
                       format: 'json',
                       url: extractedUrl,
-                    })}`
-                  ).then(o => o.json())
+                    }
+                  })
 
                   // override node
                   node.type = `html`
