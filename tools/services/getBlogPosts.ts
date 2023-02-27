@@ -1,11 +1,13 @@
 import PQueue from 'p-queue'
+import { setGlobalDispatcher, Agent } from 'undici'
 
 import { blogPostField } from '../../src/core/constants/blogPostField'
 import { getBlurImage } from '../../src/core/services/getBlurImage'
 
 import type { BlogPost } from '../../src/core/@types/BlogPost'
 
-const queue = new PQueue({ concurrency: 6 })
+const queue = new PQueue({ concurrency: 10 })
+setGlobalDispatcher(new Agent({ connect: { timeout: 60000 } }))
 
 interface RawQueryResult {
   data: {
@@ -33,7 +35,7 @@ interface Option {
 }
 
 export const getBlogPosts = async (options: Option = {}) => {
-  const { preview = false, noBlur = false } = options
+  const { preview = false } = options
 
   const query = `
     query {
@@ -72,7 +74,7 @@ export const getBlogPosts = async (options: Option = {}) => {
 
   const intervalId = setInterval(() => {
     console.log('fulfilled:', res.length)
-  }, 1200)
+  }, 1000)
 
   await Promise.all(
     queryResult.data.blogPostCollection.items.map(blog =>
@@ -81,12 +83,7 @@ export const getBlogPosts = async (options: Option = {}) => {
           ...blog,
           banner: {
             ...blog.banner,
-            placeholder: noBlur
-              ? {
-                  blurhashCode: '',
-                  encoded: '',
-                }
-              : await getBlurImage(blog.banner),
+            placeholder: await getBlurImage(blog.banner),
           },
         })
       })
