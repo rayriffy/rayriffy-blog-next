@@ -4,9 +4,12 @@ import path from 'path'
 import axios from 'axios'
 import { selectAll } from 'unist-util-select'
 import { stringify } from 'querystring'
+import { kebabCase } from 'lodash-es'
 
+import { getHash } from './services/getHash'
 import { getProviderEndpoint } from './services/getProviderEndpoint.mjs'
 
+const cacheDirectory = path.join(process.cwd(), '.cache')
 const providerCache = path.join(process.cwd(), '.cache/providers.json')
 
 /**
@@ -73,21 +76,37 @@ export const iframeParser = () => {
               const endpoint = getProviderEndpoint(extractedUrl, providers)
 
               if (endpoint !== undefined) {
-                try {
-                  // call api
-                  const { data: oembedResult } = await axios.get(endpoint, {
-                    params: {
-                      format: 'json',
-                      url: extractedUrl,
-                    }
-                  })
+                const oembedCacheDirectory = path.join(cacheDirectory, 'fetched')
+                const targetFile = getHash([extractedUrl]) + '.json'
 
-                  // override node
+                if (fs.existsSync(path.join(oembedCacheDirectory, targetFile))) {
+                  const oembedResult = JSON.parse(fs.readFileSync(path.join(oembedCacheDirectory, targetFile), 'utf-8'))
+
                   node.type = `html`
-                  node.value = `
-                <div class="flex justify-center">${oembedResult.html}</div>
-              `
-                } catch (e) {}
+                  node.value = `<div class="flex justify-center">${oembedResult.html}</div>`
+                } else {
+                  try {
+                    // call api
+                    const { data: oembedResult } = await axios.get(endpoint, {
+                      params: {
+                        format: 'json',
+                        url: extractedUrl,
+                      }
+                    })
+  
+                    if (!fs.existsSync(oembedCacheDirectory)) {
+                      fs.mkdirSync(oembedCacheDirectory, {
+                        recursive: true
+                      })
+                    }
+  
+                    fs.writeFileSync(path.join(oembedCacheDirectory, targetFile), JSON.stringify(oembedResult))
+  
+                    // override node
+                    node.type = `html`
+                    node.value = `<div class="flex justify-center">${oembedResult.html}</div>`
+                  } catch (e) {}
+                }
               }
               break
           }
