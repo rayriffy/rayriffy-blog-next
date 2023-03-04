@@ -3,8 +3,6 @@ import path from 'path'
 
 import axios from 'axios'
 import { selectAll } from 'unist-util-select'
-import { stringify } from 'querystring'
-import { kebabCase } from 'lodash-es'
 
 import { getHash } from './services/getHash'
 import { getProviderEndpoint } from './services/getProviderEndpoint.mjs'
