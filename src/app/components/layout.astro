@@ -52,22 +52,6 @@ const transformedTitle = title === '' ? 'Riffy Blog' : `Riffy Blog · ${title}`
 
     <meta property="og:image" content={image} />
     <meta property="twitter:image" content={image} />
-
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-J24WPTD619"
-      type="text/partytown"
-    ></script>
-    <script
-      type="text/partytown"
-      set:html={`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-  
-        gtag('config', 'G-J24WPTD619');
-      `}
-    ></script>
   </head>
   <body>
     <div class="py-12 space-y-8">

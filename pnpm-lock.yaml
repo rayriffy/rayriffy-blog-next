@@ -3,12 +3,10 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/markdown-remark': ^2.0.1
   '@astrojs/mdx': ^0.17.2
-  '@astrojs/partytown': ^1.0.3
   '@astrojs/prefetch': ^0.1.2
   '@astrojs/rss': ^2.1.1
   '@astrojs/sitemap': ^1.1.0
   '@astrojs/tailwind': ^3.0.1
-  '@builder.io/partytown': ^0.7.5
   '@tailwindcss/typography': ^0.5.9
   '@types/sharp': ^0.31.1
   astro: ^2.0.17
@@ -29,12 +27,10 @@ specifiers:
 devDependencies:
   '@astrojs/markdown-remark': 2.0.1_astro@2.0.17
   '@astrojs/mdx': 0.17.2_astro@2.0.17
-  '@astrojs/partytown': 1.0.3
   '@astrojs/prefetch': 0.1.2
   '@astrojs/rss': 2.1.1
   '@astrojs/sitemap': 1.1.0
   '@astrojs/tailwind': 3.0.1_3l4vpu46khjmu2ewun7ysgj2ju
-  '@builder.io/partytown': 0.7.5
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
   '@types/sharp': 0.31.1
   astro: 2.0.17
@@ -140,13 +136,6 @@ packages:
       - astro
       - rollup
       - supports-color
-    dev: true
-
-  /@astrojs/partytown/1.0.3:
-    resolution: {integrity: sha512-u2/pG9owRipICz/PksLUUqUat98sm0/YODvv3/IKKJ0JCwF7+0olbMvyyvoj7kJooIXh0XowcOjEs5vhCYFo5g==}
-    dependencies:
-      '@builder.io/partytown': 0.7.5
-      mrmime: 1.0.1
     dev: true
 
   /@astrojs/prefetch/0.1.2:
@@ -443,11 +432,6 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
-    dev: true
-
-  /@builder.io/partytown/0.7.5:
-    resolution: {integrity: sha512-Zbr2Eo0AQ4yzmQr/36/h+6LKjmdVBB3Q5cGzO6rtlIKB/IOpbQVUZW+XAnhpJmJr9sIF97OZjgbhG9k7Sjn4yw==}
-    hasBin: true
     dev: true
 
   /@cspotcode/source-map-support/0.8.1:
@@ -3100,11 +3084,6 @@ packages:
   /mri/1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
-    dev: true
-
-  /mrmime/1.0.1:
-    resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==}
-    engines: {node: '>=10'}
     dev: true
 
   /ms/2.1.2:

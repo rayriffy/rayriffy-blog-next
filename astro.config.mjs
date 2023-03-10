@@ -5,7 +5,6 @@ import compress from 'astro-compress'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
-import partytown from '@astrojs/partytown'
 import prefetch from '@astrojs/prefetch'
 
 /* Remark plugins */
@@ -24,12 +23,6 @@ export default defineConfig({
     tailwind({
       config: {
         applyBaseStyles: false,
-      },
-    }),
-    partytown({
-      config: {
-        debug: false,
-        forward: ['dataLayer.push'],
       },
     }),
     compress({

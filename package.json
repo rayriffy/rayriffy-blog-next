@@ -17,12 +17,10 @@
   "devDependencies": {
     "@astrojs/markdown-remark": "^2.0.1",
     "@astrojs/mdx": "^0.17.2",
-    "@astrojs/partytown": "^1.0.3",
     "@astrojs/prefetch": "^0.1.2",
     "@astrojs/rss": "^2.1.1",
     "@astrojs/sitemap": "^1.1.0",
     "@astrojs/tailwind": "^3.0.1",
-    "@builder.io/partytown": "^0.7.5",
     "@tailwindcss/typography": "^0.5.9",
     "@types/sharp": "^0.31.1",
     "astro": "^2.0.17",
