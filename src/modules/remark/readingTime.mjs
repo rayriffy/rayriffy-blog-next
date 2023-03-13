@@ -43,7 +43,9 @@ export const readingTime = () => {
   return async (markdownAST, { data }) => {
     const textContent = one(markdownAST)
 
-    const readingTime = getReadingTime(textContent)
+    const readingTime = getReadingTime(textContent, {
+      wordsPerMinute: 150
+    })
     data.astro.frontmatter.minutesRead = readingTime.text
   }
 }
