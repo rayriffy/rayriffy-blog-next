@@ -52,6 +52,12 @@ const transformedTitle = title === '' ? 'Riffy Blog' : `Riffy Blog · ${title}`
 
     <meta property="og:image" content={image} />
     <meta property="twitter:image" content={image} />
+
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2837414306121160"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="py-12 space-y-8">
@@ -86,6 +92,5 @@ const transformedTitle = title === '' ? 'Riffy Blog' : `Riffy Blog · ${title}`
       </main>
       <Footer />
     </div>
-    <slot name="end-body"/>
   </body>
 </html>
