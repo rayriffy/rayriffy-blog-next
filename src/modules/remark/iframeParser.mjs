@@ -39,7 +39,9 @@ export const iframeParser = () => {
         fs.mkdirSync(path.dirname(providerCache), {
           recursive: true,
         })
-      const { data: providersRemote } = await axios.get('https://oembed.com/providers.json')
+      const { data: providersRemote } = await axios.get(
+        'https://oembed.com/providers.json'
+      )
       fs.writeFileSync(providerCache, JSON.stringify(providersRemote))
     }
 
@@ -74,11 +76,21 @@ export const iframeParser = () => {
               const endpoint = getProviderEndpoint(extractedUrl, providers)
 
               if (endpoint !== undefined) {
-                const oembedCacheDirectory = path.join(cacheDirectory, 'fetched')
+                const oembedCacheDirectory = path.join(
+                  cacheDirectory,
+                  'fetched'
+                )
                 const targetFile = getHash([extractedUrl]) + '.json'
 
-                if (fs.existsSync(path.join(oembedCacheDirectory, targetFile))) {
-                  const oembedResult = JSON.parse(fs.readFileSync(path.join(oembedCacheDirectory, targetFile), 'utf-8'))
+                if (
+                  fs.existsSync(path.join(oembedCacheDirectory, targetFile))
+                ) {
+                  const oembedResult = JSON.parse(
+                    fs.readFileSync(
+                      path.join(oembedCacheDirectory, targetFile),
+                      'utf-8'
+                    )
+                  )
 
                   node.type = `html`
                   node.value = `<div class="flex justify-center">${oembedResult.html}</div>`
@@ -89,17 +101,20 @@ export const iframeParser = () => {
                       params: {
                         format: 'json',
                         url: extractedUrl,
-                      }
+                      },
                     })
-  
+
                     if (!fs.existsSync(oembedCacheDirectory)) {
                       fs.mkdirSync(oembedCacheDirectory, {
-                        recursive: true
+                        recursive: true,
                       })
                     }
-  
-                    fs.writeFileSync(path.join(oembedCacheDirectory, targetFile), JSON.stringify(oembedResult))
-  
+
+                    fs.writeFileSync(
+                      path.join(oembedCacheDirectory, targetFile),
+                      JSON.stringify(oembedResult)
+                    )
+
                     // override node
                     node.type = `html`
                     node.value = `<div class="flex justify-center">${oembedResult.html}</div>`

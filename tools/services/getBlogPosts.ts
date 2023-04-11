@@ -48,16 +48,21 @@ export const getBlogPosts = async (
   `
 
   console.log('fetching blogs from cms...')
-  const { data: queryResult } = await axios.post<RawQueryResult>(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`, {
-    query,
-  }, {
-    headers: {
-      Authorization: `Bearer ${
-        preview
-          ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-          : process.env.CONTENTFUL_ACCESS_TOKEN}`
+  const { data: queryResult } = await axios.post<RawQueryResult>(
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+    {
+      query,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${
+          preview
+            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+            : process.env.CONTENTFUL_ACCESS_TOKEN
+        }`,
+      },
     }
-  })
+  )
 
   console.log('post-processing...')
 

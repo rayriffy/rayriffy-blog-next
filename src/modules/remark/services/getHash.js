@@ -1,8 +1,8 @@
 import { createHash } from 'crypto'
 
 /**
- * 
- * @param {(string | number | Buffer)[]} items 
+ *
+ * @param {(string | number | Buffer)[]} items
  * @returns string
  */
 export const getHash = items => {

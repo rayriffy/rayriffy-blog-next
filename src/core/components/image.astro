@@ -32,12 +32,12 @@ const generateSourceSet = (url: string, type: CDNImageType) =>
     .join(', ')
 ---
 
-<div class="relative w-full aspect-[1500/788]">
+<div class="relative aspect-[1500/788] w-full">
   {
     placeholder !== null && (
       <img
         src={placeholder}
-        class="w-full aspect-[1500/788] absolute"
+        class="absolute aspect-[1500/788] w-full"
         alt="blurhash"
       />
     )

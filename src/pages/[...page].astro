@@ -27,9 +27,7 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
     props: {
       ...page.props,
       featuredBlogPost:
-        i !== 0
-          ? null
-          : blogPosts.find(o => o.data.featured === true) ?? null,
+        i !== 0 ? null : blogPosts.find(o => o.data.featured === true) ?? null,
     },
     params: {
       page: i === 0 ? undefined : `pages/${i + 1}`,
@@ -41,15 +39,15 @@ const { page, featuredBlogPost } = Astro.props
 ---
 
 <AppLayout>
-  <div class="max-w-7xl mx-auto space-y-6 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
     {
       featuredBlogPost !== null && (
-        <div class="max-w-4xl mx-auto">
+        <div class="mx-auto max-w-4xl">
           <a href={featuredBlogPost.slug} rel="prefetch">
-            <div class="rounded-none sm:rounded-2xl overflow-hidden relative">
-              <div class="absolute top-0 bottom-0 left-0 right-0 p-6 md:p-8 bg-black-overlay z-10 flex items-end">
-                <div class="space-y-0.5 md:space-y-2 text-white">
-                  <span class="uppercase text-base md:text-lg">Featured</span>
+            <div class="relative overflow-hidden rounded-none sm:rounded-2xl">
+              <div class="absolute top-0 bottom-0 left-0 right-0 z-10 flex items-end bg-black-overlay p-6 md:p-8">
+                <div class="space-y-0.5 text-white md:space-y-2">
+                  <span class="text-base uppercase md:text-lg">Featured</span>
                   <h1 class="text-xl md:text-4xl">
                     {featuredBlogPost.data.title}
                   </h1>
@@ -73,13 +71,13 @@ const { page, featuredBlogPost } = Astro.props
         </div>
       )
     }
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+    <div class="grid grid-cols-1 items-center gap-8 sm:grid-cols-2">
       {
         page.data.map(({ data, slug }, i) => (
           <a href={`/${slug}`} rel="prefetch">
-            <div class="rounded-none sm:rounded-2xl overflow-hidden shadow-lg bg-white relative">
+            <div class="relative overflow-hidden rounded-none bg-white shadow-lg sm:rounded-2xl">
               {data.draft && (
-                <span class="absolute text-white bg-black py-1.5 px-3 z-10 text-sm font-bold italic rounded-br-2xl">
+                <span class="absolute z-10 rounded-br-2xl bg-black py-1.5 px-3 text-sm font-bold italic text-white">
                   DRAFT
                 </span>
               )}
@@ -94,7 +92,7 @@ const { page, featuredBlogPost } = Astro.props
               />
               <div class="p-4 sm:p-6">
                 <h1 class="text-2xl text-gray-900">{data.title}</h1>
-                <p class="text-gray-600 pt-1">
+                <p class="pt-1 text-gray-600">
                   Written by{' '}
                   <span class="font-medium text-gray-800">{data.author}</span>{' '}
                   on{' '}
@@ -102,7 +100,7 @@ const { page, featuredBlogPost } = Astro.props
                     {serializeDate(data.date)}
                   </span>
                 </p>
-                <p class="text-gray-600 py-2">{data.subtitle}</p>
+                <p class="py-2 text-gray-600">{data.subtitle}</p>
               </div>
             </div>
           </a>

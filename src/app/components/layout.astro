@@ -60,15 +60,15 @@ const transformedTitle = title === '' ? 'Riffy Blog' : `Riffy Blog · ${title}`
     ></script>
   </head>
   <body>
-    <div class="py-12 space-y-8">
-      <header class="max-w-md mx-auto">
+    <div class="space-y-8 py-12">
+      <header class="mx-auto max-w-md">
         <div class="flex justify-center">
           <a href="/" aria-label="Logo" rel="prefetch">
             <Logo className="w-16 md:w-20" />
           </a>
         </div>
         <div
-          class="flex justify-center space-x-6 pt-4 text-gray-900 hover:text-gray-700 uppercase text-sm select-none"
+          class="flex select-none justify-center space-x-6 pt-4 text-sm uppercase text-gray-900 hover:text-gray-700"
         >
           {
             headerNavationItems.map(item =>

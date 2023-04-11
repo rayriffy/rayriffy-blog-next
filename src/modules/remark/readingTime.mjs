@@ -44,7 +44,7 @@ export const readingTime = () => {
     const textContent = one(markdownAST)
 
     const readingTime = getReadingTime(textContent, {
-      wordsPerMinute: 150
+      wordsPerMinute: 150,
     })
     data.astro.frontmatter.minutesRead = readingTime.text
   }
