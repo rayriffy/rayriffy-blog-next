@@ -31,39 +31,9 @@ const { banner, title, subtitle } = Astro.props.blog.data
         <div class="py-8 px-4 sm:px-6 lg:px-8">
           <Heading {...Astro.props} />
 
-          <section class="flex justify-center py-4">
-            <div>
-              <Adsense
-                client="ca-pub-2837414306121160"
-                style={{
-                  width: '300px',
-                  height: '250px',
-                  minHeight: '250px',
-                }}
-                slot="4010112179"
-                format="fluid"
-                layoutKey="-fb+5w+4e-db+86"
-                class="block"
-              />
-            </div>
-          </section>
           <article class="prose prose-blue mx-auto max-w-3xl pt-6">
             <slot />
           </article>
-          <section class="flex justify-center py-4">
-            <div>
-              <Adsense
-                client="ca-pub-2837414306121160"
-                style={{
-                  width: '468px',
-                  height: '200px',
-                }}
-                slot="5740521463"
-                format="auto"
-                responsive="true"
-              />
-            </div>
-          </section>
         </div>
       </div>
     </div>
