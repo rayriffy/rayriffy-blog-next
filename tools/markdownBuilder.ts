@@ -6,9 +6,7 @@ import { config } from 'dotenv'
 import { reporter } from './services/reporter'
 import { getBlogPosts } from './services/getBlogPosts'
 
-// setup env
 config()
-const {} = process.env
 
 const rootMarkdownDirectory = path.join(process.cwd(), 'src/content/blog')
 const stringifyArray = (strings: (string | number)[]) => {

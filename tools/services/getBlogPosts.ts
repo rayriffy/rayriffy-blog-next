@@ -1,4 +1,4 @@
-import axios from 'axios'
+import wretch from 'wretch'
 
 import { blogPostField } from '../../src/core/constants/blogPostField'
 import { getBlurImage } from '../../src/core/services/getBlurImage'
@@ -48,21 +48,17 @@ export const getBlogPosts = async (
   `
 
   console.log('fetching blogs from cms...')
-  const { data: queryResult } = await axios.post<RawQueryResult>(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
-    {
-      query,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${
-          preview
-            ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-            : process.env.CONTENTFUL_ACCESS_TOKEN
-        }`,
-      },
-    }
-  )
+
+  const queryResult: RawQueryResult = await wretch(`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`)
+    .headers({
+      Authorization: `Bearer ${
+        preview
+          ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+          : process.env.CONTENTFUL_ACCESS_TOKEN
+      }`,
+    })
+    .post({ query })
+    .json()
 
   console.log('post-processing...')
 

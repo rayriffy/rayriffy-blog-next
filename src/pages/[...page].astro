@@ -1,11 +1,10 @@
 ---
-import dayjs from 'dayjs'
-
 import AppLayout from '$app/components/layout.astro'
 import Image from '$core/components/image.astro'
+import Pagination from '$modules/listing/components/pagination.astro'
+
 import { getCollectionBlog } from '$core/services/getCollectionBlog'
 import { serializeDate } from '$core/services/serializeDate'
-import Pagination from '$modules/listing/components/pagination.astro'
 
 import type { GetStaticPaths, Page } from 'astro'
 import type { CollectionEntry } from 'astro:content'

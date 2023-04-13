@@ -1,4 +1,4 @@
-import axios from 'axios'
+import wretch from 'wretch'
 import { decode, encode } from 'blurhash'
 import sharp from 'sharp'
 
@@ -15,9 +15,7 @@ export const getBlurImage = async (image: Asset): Promise<BlurhashResponse> => {
   */
   try {
     // fetch an image
-    const fetchedImage: ArrayBuffer = await axios(image.placeholder, {
-      responseType: 'arraybuffer',
-    }).then(o => o.data)
+    const fetchedImage = await wretch(image.placeholder).get().arrayBuffer()
 
     // encode
     const {

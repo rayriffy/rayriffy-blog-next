@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config'
 
 /* Astro plugins */
 import compress from 'astro-compress'
-import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import prefetch from '@astrojs/prefetch'
@@ -16,7 +15,6 @@ import { readingTime } from './src/modules/remark/readingTime.mjs'
 export default defineConfig({
   site: 'https://blog.rayriffy.com/',
   integrations: [
-    mdx(),
     sitemap({
       filter: page => !page.includes('/pages/'),
     }),

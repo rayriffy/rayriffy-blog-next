@@ -1,7 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 
-import axios from 'axios'
+import wretch from 'wretch'
+import QueryStringAddon from "wretch/addons/queryString"
 import { selectAll } from 'unist-util-select'
 
 import { getHash } from './services/getHash'
@@ -39,9 +40,7 @@ export const iframeParser = () => {
         fs.mkdirSync(path.dirname(providerCache), {
           recursive: true,
         })
-      const { data: providersRemote } = await axios.get(
-        'https://oembed.com/providers.json'
-      )
+      const providersRemote = await wretch('https://oembed.com/providers.json').get().json()
       fs.writeFileSync(providerCache, JSON.stringify(providersRemote))
     }
 
@@ -97,11 +96,9 @@ export const iframeParser = () => {
                 } else {
                   try {
                     // call api
-                    const { data: oembedResult } = await axios.get(endpoint, {
-                      params: {
-                        format: 'json',
-                        url: extractedUrl,
-                      },
+                    const oembedResult = await wretch(endpoint).addon(QueryStringAddon).query({
+                      format: 'json',
+                      url: extractedUrl,
                     })
 
                     if (!fs.existsSync(oembedCacheDirectory)) {
