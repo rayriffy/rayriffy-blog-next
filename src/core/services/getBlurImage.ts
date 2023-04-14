@@ -59,7 +59,7 @@ export const getBlurImage = async (image: Asset, attempt = 1): Promise<BlurhashR
       encoded: `data:image/jpeg;base64,${resizedImageBuf.toString('base64')}`,
     }
   } catch (e) {
-    if (attempt > 2) {
+    if (attempt < 2) {
       console.log(`attempt #${attempt} failed! performing attempt #${attempt + 1} in 10 seconds`)
       await new Promise(r => setTimeout(r, 10000))
 
