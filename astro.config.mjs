@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config'
 
 /* Astro plugins */
-import compress from 'astro-compress'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import prefetch from '@astrojs/prefetch'
+import html from 'astro-html-terser'
 
 /* Remark plugins */
 import { iframeParser } from './src/modules/remark/iframeParser.mjs'
@@ -23,11 +23,7 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-    compress({
-      img: false,
-      svg: false,
-      js: true,
-    }),
+    html(),
     prefetch(),
   ],
   markdown: {
