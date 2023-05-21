@@ -6,7 +6,7 @@ export const getCollectionBlog = async (): Promise<
 > => {
   const [remoteBlogs, localBlogs] = await Promise.all([
     getCollection('blog'),
-    getCollection('local'),
+    getCollection('local').then(o => o.filter(o => o.data.title !== 'null')),
   ])
 
   // @ts-ignore
