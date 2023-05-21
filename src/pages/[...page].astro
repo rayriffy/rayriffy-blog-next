@@ -22,7 +22,6 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   })
 
   return pages.map((page, i) => ({
-    ...page,
     props: {
       ...page.props,
       featuredBlogPost:
@@ -44,7 +43,7 @@ const { page, featuredBlogPost } = Astro.props
         <div class="mx-auto max-w-4xl">
           <a href={featuredBlogPost.slug} rel="prefetch">
             <div class="relative overflow-hidden rounded-none sm:rounded-2xl">
-              <div class="absolute top-0 bottom-0 left-0 right-0 z-10 flex items-end bg-black-overlay p-6 md:p-8">
+              <div class="absolute bottom-0 left-0 right-0 top-0 z-10 flex items-end bg-black-overlay p-6 md:p-8">
                 <div class="space-y-0.5 text-white md:space-y-2">
                   <span class="text-base uppercase md:text-lg">Featured</span>
                   <h1 class="text-xl md:text-4xl">
@@ -74,9 +73,12 @@ const { page, featuredBlogPost } = Astro.props
       {
         page.data.map(({ data, slug }, i) => (
           <a href={`/${slug}`} rel="prefetch">
-            <div class="relative overflow-hidden rounded-none bg-white shadow-lg sm:rounded-2xl">
+            <div
+              class="relative overflow-hidden rounded-none bg-white shadow-lg sm:rounded-2xl"
+              style={`view-transition-name: blog-${slug}`}
+            >
               {data.draft && (
-                <span class="absolute z-10 rounded-br-2xl bg-black py-1.5 px-3 text-sm font-bold italic text-white">
+                <span class="absolute z-10 rounded-br-2xl bg-black px-3 py-1.5 text-sm font-bold italic text-white">
                   DRAFT
                 </span>
               )}
@@ -107,7 +109,7 @@ const { page, featuredBlogPost } = Astro.props
       }
     </div>
     <div class="pt-6">
-      <Pagination current={page.currentPage} max={page.total} />
+      <Pagination current={page.currentPage} max={Math.ceil(page.total / 6)} />
     </div>
   </div>
 </AppLayout>
