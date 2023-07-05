@@ -2,7 +2,7 @@
 
 The next iteration of **Riffy Blog**
 
-**DEPRECATED: This site should still be able to study as a tempalte. But it will no longer be maintained anymore since I merged blog into my [frontpage](https://github.com/rayriffy/rayriffy.com) repository**
+**DEPRECATED: This site should be able to be used as a study on how Astro works. But it will no longer be maintained anymore since I merged entire blog into my [frontpage](https://github.com/rayriffy/rayriffy.com) repository**
 
 ## Core changes
 
